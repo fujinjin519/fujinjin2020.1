@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=sc, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 后台的数据是：json格式的数据。特殊的数据类型。
+    数据类型：普通数据类型   引用数据类型
+    json数据，唯一不同就是属性名多了“”号。它不属于数据类型
+   后台获取的数据，获得的是json格式的字符串：-->
+<script>
+    let obj={
+        "name":"祝更",
+        "age":"10"
+    }
+    console.log(JSON.stringify(obj));//'{"name":"祝更","age":"10"}‘ json格式的对象转为字符串
+    
+    let str='{"name":"祝更","age":"10"}'
+    console.log(JSON.parse(str)); //{name: "祝更", age: "10"} //字符串转为对象
+    
+
+
+    
+
+    
+
+
+</script>
+</body>
+</html>
