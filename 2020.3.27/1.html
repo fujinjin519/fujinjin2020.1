@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 自执行函数 -->
+   <script>
+    //    function fn(x,y){
+    //        return function(z){
+    //            return x+y+z
+    //        }
+
+    //    }
+    //    let res=fn(1,2)(3)
+    //    console.log(res);//6
+       
+// function fn(x,y){
+//     return x+y
+
+// };
+// let fn=(x,y)=>x+y
+// let fn=(x,y)=>{
+//     return (z)=>x+y+z
+
+// }
+// let fn=(x,y)=>{
+//     return z=>x+y+z
+// }
+// document.getElementById()
+// box.getElementByTagName
+// //类的原型
+// document.getElementById() //Document类的原型上
+// box.getElementByTagName("li") //
+//内置类的原型上扩展一些方法，可以调用。插件基面向对象实现
+
+
+//1.数字： Number.prototype.plus=function plus(n){
+//     return this+n;
+//     //this:
+
+// }
+// Number.prototype.minus=function minus(n){
+//     return this-n;
+    
+//     //this:
+// }
+// let n=10;
+// let m=n.plus(10).minus(5)//为了调用链式写法，需要保证plus/minus执行完的返回结果依然上一个数字
+// console.log(m); //15
+
+//2.数组  Array.prototype.unique=function unique(){
+//     //去重  unique
+//     // new Set() //实现直接去重 是一个set结构，需要转数组,有些类似类数组。类数组也是对象
+//    return  Array.from(new Set(this)) //去重后的数组
+// }
+// let ary=[12,23,12,13,12,14]
+// ary=ary.unique().sort((a,b)=>a-b)
+// console.log(ary);
+
+
+
+//3.字符串上的方法  String
+// String.prototype.getParams=function getParams(){
+//     //
+//     let askIndex=this.indexOf("?"),
+//          polIndex=this.indexOf("#"),
+//          askIndex="",
+
+
+
+// }
+// let url="loacllhost?key1=val1&key2=val2&key3=val3"
+// console.log(url.getParams("key3"));
+
+//  function _new(Fn){
+//      arguments
+
+  
+
+
+// }
+// let sanmao=_new(Dog,"三毛");
+// sanmao.bark();//
+// sanmao.sayName();//
+// console.log(sanmao instanceof Dog);//
+
+// let obj={
+//     n:0,
+//     toString:function(){
+
+//     }
+// };
+// console.log(obj.tostring());//ok
+
+
+// Array.prototype.push=function push(){
+//     // 
+//     this[this.length]=n;
+//     // 
+//     return this.length
+// }
+// arr.push(100);
+
+
+// let obj={
+//     2:3,
+//     3:4,
+//     length:2,
+//     push:Array.prototype.push
+// }
+// obj.push(1);
+// // n=1    this.obj
+
+// obj.push(2);//
+
+// console.log(obj); //
+
+// function _new(Fn){
+//     let args
+// }
+function _new(Fn){
+    let args=Array.from(arguments).slice(1);
+    let obj=Object.create(Fn.prototype); //=>Fn实例:obj.__proto__===Fn.prototype
+    let result=Fn.apply(obj,args); //=>让this是实例对象
+    if(result!==null && (typeof result==="object"||typeof result==="function")){
+         return result;
+    }
+   return obj;
+}
+
+let f1 = _new(Fn,100,200);
+
+//1. 函数类型       普通函数   构造函数（类，实例，原型，原型链）
+//2.对象类型        普通对象 和obj没啥区别，用来存储简直对，对象就有_proto_ ,
+//所有函数都是Function内置类的实例，
+
+//对象：
+// 1. 对象数据类型值：{} []  /^$/ 日期对象 Math数学函数对象 ...
+// 2. 一般实例都是对象（基本数据值除外）
+// 3. 一般类的原型也都是对象 （除Function.prototype外）
+// -----------------
+// 4. 类(函数)即时函数数据类型（主类型），也是对象数据类型（辅助类型）
+</script>
+</body>
+</html>

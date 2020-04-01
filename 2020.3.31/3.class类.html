@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 公有属性，私有属性是产品的，实例才有，
+     静态属性是自身的属性，意思是说静态属性一般保存个作者，商标，使用说明啥的？ -->
+    <script>
+        // function Person(){
+        //     this.name='zhufeng'
+        // } 
+        // person.prototype.constructor=person
+        // person.prototype.eate=funtion()
+        // person.prototypr.paly=function() 
+        //person.qwer=666 //qwer是person的静态属性，自身的属性
+        // let p=new Person()
+       //上面是es6之前的写法
+       
+        class People{ //这个大括号是固定写法
+        //class声明的类 只能通过new执行，不能当作普通函数
+          constructor(...arg){ //剩余运算符
+          //constructor类的函数体
+          this.name="zhufeng"
+          this.age=10;
+          console.log(arg); //1,2,4
+         }
+         eat(){
+             //类的共有属性 ，实例会指向它
+             console.log(this.name);
+             //this.都是当前的实例
+         }
+         paly(){
+
+         }
+         static qwer=666 //
+       
+       }   
+        var p2=new People(1,2,4)  
+    </script>
+</body>
+</html>

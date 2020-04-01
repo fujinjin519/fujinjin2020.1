@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+//    var t1=ary.forEach(fn)
+//     var t2=ary.map(fn)
+//     console.log(t1);// forEach没有返回值 
+//     console.log(t2);
+//     var arr=[100,200,300,400]
+//     var newArr=arr.map((item,index)=>{
+//         return 1000+item
+//     })
+//    console.log(newArr);
+
+//some。只要有一个回调函数的返回值是true.
+var arr=[100,200,300,400]    
+var bol1=arr.some((item,index)=>{
+//    console.log(item);
+   
+    return item>600 
+})
+var bol2=arr.some((item,index)=>{
+    // console.log(item);
+    return item>200
+})
+// console.log(bol1);
+// console.log(bol2);
+//every：一旦有一个return false。则后面的不执行
+var arr=[100,200,300,400]    
+var bol1=arr.every((item,index)=>{
+   console.log(item);//100
+   
+    return item>600 
+})
+var bol2=arr.every((item,index)=>{
+    console.log(item); //100
+    return item>200
+})
+console.log(bol1); //false
+console.log(bol2);
+
+
+    
+
+    </script>
+</body>
+</html>

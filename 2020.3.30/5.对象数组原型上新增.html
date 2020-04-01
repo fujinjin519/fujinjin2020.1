@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 回调函数
+    字面上的理解，回调函数就是一个参数，将这个函数作为参数传到另一个函数里面，当那个函数执行完之后，再执行传进去的这个函数。这个过程就叫做回调。
+    回调，回调，就是回头调用的意思。主函数的事先干完，回头再调用传进来的那个函数。
+ foreach ,map, 
+ some ，every,
+ 
+ filter  reduce
+
+-->
+    <script>
+    //  var ary=[2,4,5,7,8]
+      var ary=[{a:100},{a:200},{a:300}]
+      let fn=((item,index)=>{ //回调函数 
+            console.log(item,index); //每一项 //索引
+            // item=1000; //每一项的值不改变
+            item.a=1000  //改变。.a改变
+            // return 100
+            return index
+            // return item
+          })
+    //    ary.forEach(fn) //fn是forEach的回调函数
+    //    console.log(ary); //[2,4,5,7,8] 数组结果不变
+    //   console.log(ary); //引用数据类型  数组结果改变
+      
+    //   (function(){})//自治性函数
+    // function fn(){
+
+    // }
+    // let fn=()=>{
+
+    // }
+    // var t1=ary.forEach(fn)
+    // var t2=ary.map(fn)
+    // console.log(t1);// forEach没有返回值 
+    // console.log(t2); //有返回值 有return的返回什么，没有return undifined
+    
+    var arr=[100,200,300,400]
+    var newarr=arr.map((item,index)=>{ return item+1000})
+    console.log(newarr);
+    
+    
+    
+
+    </script>
+</body>
+</html>

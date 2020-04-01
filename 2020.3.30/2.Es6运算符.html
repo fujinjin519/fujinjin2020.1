@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   
+    
+</body>
+</html>
+<script>
+    //剩余运算符 函数
+    //展开运算符 数组和对象都可以用
+    // function fn(...arr){
+
+    // }
+    // Math.max(...[1,2,3,4]) //展开
+    var a=[1,2,3]
+        b=[2,3,4]
+        c=[3,4,5]
+    var d=[...a,...b,...c]
+    console.log(d);
+
+    var obj1={a:1,b:2,c:3}
+        obj2={d:'er',c:2}
+    var obj3={...obj1,...obj2}
+    console.log(obj3);//属性名一样的话，后面覆盖前面的
+    
+
+    
+
+
+</script>

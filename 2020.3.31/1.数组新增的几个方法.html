@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // let fn=item=>{
+        //     console.log(item);
+        //     return item+100
+        // }
+        // let ary=[1,2,4,5]
+        // let res1=ary.forEach(fn)
+        // let res2=ary.map(fn)
+        // let bo1=ary.some(item=>item>5)
+        // let bo2=ary.every(item=>item<100)
+        
+        
+        // let ary=[1,2,3,4]
+        // let res3=ary.filter((item)=>{
+        //     return item>2
+        //     // return 1 [1,2,3,4]
+        //     //过滤 filter 把回调函数retur值是true的，复制一份放到新数组中
+
+        // })
+        // let res4=ary.filter((item)=>{
+        //     // return 0  []
+        //     return item<=2
+
+        // })
+        // console.log(res3);//[3,4]
+        // console.log(res4);//[1,2]
+        
+        // let ary=[100,200,300,400]
+        // let res5=ary.reduce((prev,next)=>{//形参，prev前一个  next后一个
+        //   //reduce //prev在第一个回调函数执行的时候，是数组中的第一项，在这之后回调函数执行时，prev是上一个回调函数的返回值 return 的内容，
+        //    //next在第一个回调函数执行的时候，是数组中的第二项，在这之后都是数组的下一项
+        //    console.log(prev);  //100  202 302  有return 看它return什么就是下一项
+        //    console.log(next); //200.300.400       
+        // //    debugger//断点   代码运行到这的时候停止向下
+        //    return next+2
+        //     //  return next
+        // })
+        
+        
+        //利用reduce实现数组求和
+        // let ary=[10340,23400,30540,46500]
+        // let sum=ary.reduce((prev,next)=>{
+        //     return prev+next
+        // })
+        // console.log(sum);
+       
+        //reduce参数问题  若存在第二个参数（1000那么第一次回调函数执行的时候，prev就是这个参数，next就是数组中的第一项  
+        let ary=[10,20,30,40]
+        let sum=ary.reduce((prev,next)=>{
+            debugger
+            return prev+next
+       },1000)
+     
+        
+        
+        // console.log(sum);
+        
+        
+        
+        
+        
+        
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 原型上新增的方法：
+    object.is   Object.assign   Object.keys，object.value 
+    objet.freeze 冻结 对象改不了了-->
+    <script>
+        object.is(NaN,NaN)//true//object.is判断比较NAN 也可以用isNAn
+        object.is(+0,-0) //false   具体区分了+0和-0
+        +0===-0 //true
+         
+
+        var obj1={a:1},
+            obj2={b:2}
+        Object.assign(obj1,obj2)//合并对象
+     // Object.assign是把obj2合并到obj1中，返回结果是合并后的新obj1
+     
+     var obj={a:123,b:12,c:45}
+     Object.keys() //[a b c ]  把obj的属性名组成一个新数组
+     object.value() // [123,12,45] 把obj的属性值组成一个新数组
+     </script>
+</body>
+</html>

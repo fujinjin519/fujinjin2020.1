@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 原型： 函数 实例  原型  （省空间）
+    原型链：属性的查找机制，自己身上，类的原型上 ，再没有找到object基类
+    作用域链：变量的查找机制，没有就向上一级，全局，还没有报错
+    函数的三种角色： 函数  类  普通对象
+    this:
+    es6:
+ -->
+    
+</body>
+</html>
+<script>
+//     function person(){
+//         this.name="珠峰"
+//         this.age="10"
+//         return{
+//             name:666,
+//             age:888
+//         } //一般不这样写
+//     }
+//     let a=person()//函数.  函数执行
+//     person.age=100//对象
+//     let p=new peoson();//类   return后面上引用数据类型会改变结果  return基本值，就是基本的this
+//     console.log(p.name);//666 
+ 
+// //   (function (){}) //自执行函数
+    
+//ES6  const  let var
+
+// const ary=[12,34]
+// ary[0]=100 //还是一个地址，不会报错
+// ary=[]//会报错
+
+
+// let a=10
+// let a=20//报错。识别块级作用域 ，同一作用域不能重复声明
+//暂时性死区     声明前不能被调用
+
+//箭头函数
+var f1=function(a,b){
+    console.log(this);
+    console.log(arguments);
+    return 123
+}
+var f2=(a,b)=>{
+    console.log(arguments);
+    console.log(this);
+}
+var obj={
+    f1,
+    f2
+}
+var arguments=666
+obj.f1(1,2,3)//this是obj。arguments是类数组[1,2,3]
+obj.f2(3,4)//this是window,  arguments和this都是函数的字段
+//箭头函数中把this和arguments,当作普通变量对待的，不再是特殊字段.会去上一级作用域找。
+f2.call([],1,2) //箭头函数来说 call bind apply 没有任何作用
+var temp=f1.bind([]) //在对temp用bind活着call,apply。里面的this不会再处理
+
+
+var f3=(a,b,...c)=>{ //...剩余运算符，剩下的实参都放到c这个数组中
+    console.log(a,b,c);
+    return a+b
+    
+}
+f3(1,2,3,4)
+
+//不定向求和
+var sum=(...ary)=>{ 
+    return eval(ary.join("+"))
+}
+////join  把指定的字符把数字拼起来，
+//eval  把字符串转成表达式
+
+
+var sum2=(...ary)=> eval(ary.join('+'));
+
+var sum3=(...ary)=>{
+    let count=0;
+    for(let i=0;i<ary.length;i++){//for循环
+        count+=ary[i]
+    }
+    // for(let k in ary){ //for in 只会循环对象 不会循环数组
+    //     count+=ary[k]
+    // }
+    // for(let k of ary){//for of
+    //     console.log(k,typeof k);
+    //  }
+    return count
+     }
+sum3(1,2,3)
+//for 循环 是根据指定的循环次数循环的
+//for in 循环对象 它会把原型自己添加的属性获取到，获取不到原型本身上的那些方法，k代表简直对的属性名索引
+//for of 循环可迭代的（就是有索引的的数据类型， 数组，字符串，map,set，等）  这个k是代表简直对它的值
+
+var obj={a:123,b:345,c:678}  //私有属性
+Object.prototype.qqq=100;//增加了一个属性名qqq:100 。公有属性
+for(let k in obj){ //k代表简直对的属性名 也是一个子符串,索引
+//    console.log(k); //a b c qq 属性名
+   if(obj.hasOwnProperty(k)){ //验证它是否是私有属性
+    //    console.log(k);//a,b,c
+   }
+}
+for(let k of obj){
+    console.log(k);
+    
+}
+</script>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // call apply  bind 
+
+        let func=function(x,y){
+            console.log(this.name,x+y);
+            
+        }
+        window.name="hello"
+        let obj={
+            name:"珠峰培训",
+            // $func:100//
+
+        }
+        //改变this封装方法func和context,建立关联(func是context的一个属性的属性值)
+        // function changeThis(func,context){
+        //     //context：要改变的this指向,必须是一个对象，剩余的参数就是未来执行func函数的时候，传递给函数的参数
+        //     //func：需要执行的方法
+        //   let args=Array.from(arguments).slice(2); //获取实参集合，获取到10和20
+        //   let uniqueKey=`$$${new Date().getTime()}`; //传递一个唯一值
+        //   context[uniqueKey]=func; //关联到一起
+        //   context[uniqueKey](...args);
+        //   delete context[uniqueKey];
+        
+        // }
+        // changeThis(func,obj,10,20)
+
+ 
+        
+
+
+        // 1. func()//hello    nan
+        //  obj.func(10,20) //报错
+        
+        // 2.obj.$func=func //改变this,原本没有关系，手动增加属性，$func产生关系，
+        // obj.$func(10,20)
+        // delete obj.$func;
+        // console.log(obj);
+       
+        
+        func.call(obj,10,20)
+        func.apply(obj,[10,5])
+
+      //call方法封装传参的几个问题， 1.直接就是指向改变的this, 不传递this指向window  2.null和undifined的时候，也让它指向window,  3.如果指向数字，传递的不上对象活着是函数类型的值，需要让它变为对象和函数，需要通过创建  n.constructor(context)
+    
+      //创建数值的方式有两种   
+      //let n=10   let n={}
+      //let m=new Number(10)  let m=
+    </script>
+</body>
+</html>
