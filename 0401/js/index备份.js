@@ -1,4 +1,5 @@
 /* 以后写代码第一件事情应当就想到“闭包”：保护作用 */
+//流水账写法
 (function () {
 	// 获取需要操作的DOM元素
 	let navList = document.querySelectorAll('.navbar-nav .nav-item'),
