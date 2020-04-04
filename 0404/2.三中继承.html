@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 类：多态，封装，继承
+        多态：重载，重写
+        重载：
+
+        继承:子类继承父类中的方法 在js中的继承和其他编程语言还是不太一样的，-->
+    <script>
+        // function fn(x,y){
+
+        // }
+        // fn(10,20)
+        // fn(10)//执行第二个fn，因为在js中会执行第二个fn,第二个会替代第一个
+        
+        // //继承
+        // function Parent(){
+        //     this.x=100
+        // }
+        // Parent.prototype.getx=function getx(){
+        //     return this.x
+        // }
+        // function Child(){
+        //     this.y=200
+        // }
+        // Child.prototype=new Parent //原型继承
+        // Child.prototype.gety=function gety(){
+        //     return this.y
+        // }
+        // let c1=new Child
+        // console.log(c1); //child    y:200
+        //继承的目的：让子类的实例同时具备父类的私有属性和公共方法
+
+        //1.原型继承（让子类的原型等于父类的实例）
+
+
+        //2，call继承（改变this,指向。指向子类的实例，子类的实例继承了 Parent它的私有属性
+
+       function Parent(){
+            this.x=100
+        }
+        Parent.prototype.getx=function getx(){
+            return this.x
+        }
+        function Child(){
+            // Parent()//把parent当作普通方法执行（没有实例和原型一说),普通函数执行this是window,
+            
+            Parent.call(this)//把this指向了c1，相当于给c1设置一个私有属性this.x=100,子类的实例继承了父类的私有属性。
+
+            this.y=200
+        }
+ 
+        Child.prototype.gety=function gety(){
+            return this.y
+        }
+        let c1=new Child
+        console.log(c1);
+
+        //3.寄生组合继承（call继承+另类原型继承）继承了公共属性也有了私有属性
+         function Parent(){
+            this.x=100
+        }
+        Parent.prototype.getx=function getx(){
+            return this.x
+        }
+        function Child(){
+            Parent.call(this)
+            this.y=200
+        }
+        // Child.prototype._proto_===Parent.prototype//ie浏览器不支持这个
+        Child.prototype=Object.create(Parent.prototype) //利用Object.create创建空对象，让空对象的原型链指向Parent.prototype
+        Child.prototype=new Parent 
+        Child.prototype.gety=function gety(){
+            return this.y
+        }
+        let c1=new Child
+        console.log(c1);
+       
+       
+       
+    //     let obj={
+    //        xxx:xxx
+    //    }
+    //    console.log(Object.create(obj) );
+    //    //创建一个空对象,让原型链指向obj。利用这个机制，
+
+
+
+   
+    </script>
+</body>
+</html>

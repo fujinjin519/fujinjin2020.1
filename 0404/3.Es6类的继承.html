@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Parent{
+            constructor(){
+              
+                this.x=100
+            }
+            //Parent.prototype.gety=function
+            gety(){
+                return this.x
+            }
+
+        }
+    //extends Parent（类似于寄生组合继承）
+        class Child extends Parent{
+            constructor(){
+                super()//相当于之前的call继承
+                this.y=200
+            }
+            //Child.prototype.gety=function
+            gety(){
+                return this.y
+            }
+
+        }
+        let c1=new Child
+        console.log(c1);
+        //child()  //不能执行报错 
+         </script>
+</body>
+</html>
