@@ -43,7 +43,7 @@ let shopModule=(function(){
         </div>`
       });
       productBox.innerHTML = str;
-    console.log(str);
+    //   console.log(str);
       
 
     }
