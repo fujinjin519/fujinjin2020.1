@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        元素.style.xxx：这个是获取行内样式。
+        只有基于js设置的样式才有可能设置到行内
+    
+    获取元素的具体值 优化
+      获取元素所有计算过的样式（回流阶段计算的样式信息就是“计算过的样式”）不论样式写到哪里，或者不按照浏览器默认样式处理。
+      1.window.getComputedStyle(元素对象，伪类)：返回的是所有被计算过的样式对象
+      2.iE6-8中   元素.currenStyle:返回样式对象
+      3.getCss(元素，“样式值”)驼峰命名法  
+       如果获取的结果是 “300px”数字加单位的  想去掉px单位
+       parseFloat ("300px")  //300
+       如果获得的是纯数字 “1”  字符串  把它转为数字
+
+
+
+    
+    -->
+    
+    <script>
+        function getCss(){  //获取样式
+            let value=window.getComputedStyle(element)[attr]
+            reg=/^\d+(px|rem|em)?$/;
+            if(reg.test(value)){
+                value=parseFloat(value)
+            }
+            return value
+        }
+
+     function setCss(element,attr,value){  //元素设置样式
+            element['style'][attr]=value;
+             
+
+     }
+
+    </script>
+</body>
+</html>

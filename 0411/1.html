@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 图片懒加载
+    性能优化，浏览器更快，
+    第一次加载页面的时候，请求图片资源，会减缓页面的渲染速度 ，为了提高首次打开的体验度，我们最开始不加载真实的图片资源，只有当页面整体渲染完成后，页面中已经呈现出除图片以外的其他资源，再去按照加载真实的图片资源去渲染
+
+sript不放在末尾，放在结构之前，还想在DOM结构加载完成后执行
+1. 把SCRIPT改成异步的即可   用async 或者  defer
+<script src="js/1.js" async> </script>
+<script src="js/1.js" defer> </script>
+2. 或者监听事件，在DOM结构加载完成在执行这个代码
+window.acc
+
+-->
+    <div class="lazyImgbox">
+        <img src="" alt="" data-image="images/1.jpg">
+    </div>
+
+<script>
+        setTimeout(function(){
+            var dataImage=img.getAttribute("data-image")
+            img.src=dataImage
+            img.removeAttribute("data-image")
+        },1000)
+        
+
+
+
+
+
+    </script>
+</body>
+</html>

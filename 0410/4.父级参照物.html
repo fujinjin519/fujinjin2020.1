@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- offsetParent 父级参照物不一定就是父级元素 
+         1.父参照物 :body   body父参照物是null
+         2.要不就是在元素设置定位了，它的父参照物就是元素内部的父元素，就:不是body
+         3.无论什么父级参照物都是body，编写一个方法
+        -->
+    <script>
+        function offset(element){
+            //父级参照物和偏移量
+            let parent=element.offsetParent,
+                top=element.offsetTop,
+                left=element.offsetLeft;
+            while(parent){ //while循环不知道多少次
+                //加上父参照物的边框
+                left+=parent.clientLeft
+                top+=parent.clientTeft
+                //加上父参照物的偏移
+                left+=parent.offsetLeft
+                top+=parent.offsetTop
+                //继续向上查找
+                parent=parent.offsetLeft;
+            }
+            return{
+                top,
+                left
+            }
+        }
+
+
+    </script>
+</body>
+</html>
