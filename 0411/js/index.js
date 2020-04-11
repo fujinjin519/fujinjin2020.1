@@ -69,6 +69,13 @@ let cascade=(function(){
         }
       }
 
+      //数据绑定完成做延迟加载
+      let lazyFunc=function lazyFunc(){
+          //单张图片加载
+          //延迟加载处理
+      
+    }
+
 
 
 
@@ -76,6 +83,7 @@ let cascade=(function(){
         init(){
             queryData()
             bind()
+            lazyFunc()
 
         }
     }

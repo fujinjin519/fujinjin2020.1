@@ -11,6 +11,7 @@ body {
 	/* 基于FLEX实现水平排列 */
 	display: flex;
 	justify-content: space-between;
+    align-items: flex-start;
 }
 
 .container .column {
