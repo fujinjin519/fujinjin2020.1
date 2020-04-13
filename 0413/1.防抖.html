@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 防抖，只让函数最后一次输出起作用，用于：input框 和 onscroll滚动条滚动频繁触发-->
+    <input type="text" id="inp" >
+    <script>
+        let inp=document.querySelector("#inp")
+        let timer=null //先设置一个null,
+        inp.oninput=function(){
+            //只要input框内容发生改变，就会触发这个函数
+            clearTimeout(timer) //清除定时器
+            
+            setTimeout(() => {//把timer重新赋值
+                console.log(this.value); //每次输入都会输出，内容输入改变几次，就输出几次，只想输出一次，清除定时器，先设置一个null,然后清除每上次一个留自己的，最后一个留下，之前的全部清掉，就只输出一次，这就是防抖
+                
+                
+            }, 1000);
+        }
+        
+    </script>
+</body>
+</html>

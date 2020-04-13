@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 节流：控制输出频率，每隔一段时间动一次，不要太频繁 -->
+     <input type="text" id="inp">
+    <script>
+        let inp=document.querySelector("#inp")
+       
+        let flag=true
+        inp.oninput=function(){
+            if(flag===false)return;
+            flag=false;
+            console.log(this.value);
+            setTimeout(() => {
+                flag=true
+                
+            }, 500);
+            }   
+
+
+    </script>
+    
+</body>
+</html>
