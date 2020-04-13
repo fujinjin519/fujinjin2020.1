@@ -4,13 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body{
+            background: white;
+            color: #333333;
+        }
+        .body_box{
+             background: #333333;
+             color: white;
+        }
+    </style>
 </head>
-<body>
+<body class="body_box">
     <!-- jq封装好的类库
     zepto:jq缩减版 -->
-    <div>珠峰</div>
+    <div></div>
     <div id="app"></div>
     <h2 class="box"></h2>
+    <button>按钮</button>
 
     
   <script src="./jquery-3.3.1(1).js"></script>
@@ -41,9 +52,48 @@ $inp.attr("type") //获取属性名对应的属性值
 $inp.attr("class","qqq") //设置
 $inp.attr("{}")//需要设置多个可以传递一个对象
 
+$inp.css("color") //3js中操作css的方法
+$inp.css("width",200) //2个参数设置
+
+//4.jq 操作类名的方法
+    $inp.hasclass("www")//判断对应的元素有没有对应的类名，有true
+    $inp.remove('box1')//移除类名
+    $inp.addclass("box2 box2",) //添加类名
+    $inp.toggleClass("qqq") //如果元素有这个类名就删除，没有就增加
+   
 
 
 
+  </script>
+  
+  <script>
+      $("button").on("click",function(){
+      $("body").toggleClass("body_box")
+
+
+})
+
+$.ajax({
+    url:"接口地址",//路径地址
+    method:"get", 
+    success:function(data){
+        //请求成功的回调
+
+    }
+});
+
+
+  </script>
+  <script>
+      $.ajax({
+          url:'./json/data.json',
+          methods:"get",
+          success(data){
+              console.log(data);
+              
+          }
+
+      })
   </script>
 </body>
 </html>
