@@ -11,7 +11,8 @@ let pbl=(function () {
             success:function(data) { 
                 console.log(data); //获取到数据，获取完数据了执行下面的数据
                 render(data) //异步的形式写的，不会等,render在这执行，不再下面写了
-              }
+                lazyLoadImg();
+            }
            })
          }
     //3.获取完数据，把数据渲染到页面上 ，js是单线程。
@@ -24,27 +25,57 @@ let pbl=(function () {
             let str=`<div class="card">
             <a href="${item.link}">
                 <div class="lazyImageBox" style='height:${h}px'>
-                    <img src="${item.pic}" alt="" data-image="${item.pic}">
+                    <img src="" alt="" data-image="${item.pic}">
                 </div>
                 <p>${item.title}</p>
             </a>
         </div> `;
-        //colums 三列 三个元素，n只能是0，1，2
+        //colums 三列 三个元素，n只能是0，1，2，
+                         //3，4，5     6.7.8   每三个一组
         
         // let n=index%3  //取3的余数
         // $columns.eq(n).append(str) //
         
-        //以上这种方式填充，有可能导致长短不一，长的长，短的短，
+        //以上这种方式按照索引填充，有可能导致长短不一，长的长，短的短，
         //我们采用方式：每次填充时去查找到最矮的那个 columns
-        //把这三个列排序，可以找到最短的那个
+        //把这三个列排序，可以找到最短的那个,按照高度
        let el=[...$columns].sort((a,b)=>{ //获取最短的那个
+        // console.log(a.offsetHeight,b.offsetHeight);
            return a.offsetHeight-b.offsetHeight
+    
+           
 
        })[0];//这样写不用取余了，按照最低的排序。sort排序完后是数组，数组的第一项[0]，是最低的
        $(el).append(str) //插入到容器中
     })
       }
-     
+    //4.图片懒加载
+    let lazyLoadImg=function(){
+        //先把所有图片获取到
+        let $imgs=$(".container img") //container 下面的img都获取到
+        //t获取屏幕的高度加上卷起来的高度(页面底部加上顶部的距离)
+        let $window=$(window) //原生转为jq的对象写法
+        //$(window).offsetHeight 屏幕的高度
+        //$（window.scrolltop:获取卷曲的高度
+        let T=$window.outerHeight()+$window.scrollTop();
+        [...$imgs].forEach((item,index)=>{
+           //item.每一张图片
+           let $item=$(item) //原生变为jq
+           if($item.css("opacity")==1)return; //说明这张图片已经加载过了
+           let h=$item.offset().top//图片顶部到body顶部的偏移量
+           if(h<T){
+               //图片顶部已经露出来了
+               let src=$item.attr("data-image")
+               $item.attr("src",src) //把真实图片的地址赋给img的src属性
+               $item.on("load",function(){
+                   $item.css("opacity",1)
+               })
+            }
+       
+        })
+
+
+    }
     return{
         init(){
             getdata();
