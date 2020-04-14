@@ -39,7 +39,7 @@ body {
 .card a .lazyImageBox img {
 	width: 100%;
 	/* 延迟加载的动画效果 */
-	opacity: 0;
+	/* opacity: 0; */
 	transition: opacity .3s ease;
 }
 
