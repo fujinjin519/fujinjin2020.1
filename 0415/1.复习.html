@@ -6,15 +6,75 @@
     <title>Document</title>
 </head>
 <body>
-   <!-- 
- 1.jq类库 (封装一些公共方法）操作dom
+ <!-- 
+ 1.jq类库 (封装一些公共方法）操作dom思想。
+ jq1.11.3(兼容ie低版本浏览器)
+ jq2.xx 鸡肋  jq3.xx悲剧
+
+
  2.插件/UI组件：针对某一个功能的封装，例如：选项卡的插件
  插件js.组件包含了cs和js。 
- 3.框架：具备自己的思想，数据驱动视图
+ 3.框架：具备自己的思想，操作数据 驱动视图
  4.git/webpack/postman:辅助代码的工具
   
+ 一。jq封装的核心机制:
+ 1.字符串
+ 2.原生变为jq对象： $([原生对象])
+ jq对象变为原生的,集合每一项都是原生的dom对象，基于索引获取 ：$box[0]  $box.get[0] 通过jq实例的
+ 3.
+
+ 二。jq内置循环机制：内置循环结合元素设置样式，不需要自己再循环了，js每一个都设置对应的样式
+ 把三个盒子颜色变为红色
+ 获取的是一个集合，不能直接集合设置，循环集合中的每一项，然后给每一项分别设置
+ [].forEach.call(boxs,item=>{
+     item.style.color="red"
+
+ })
+ $box.css("color","red")
+
+三。JQ中的each的方法，是对forEach的进一步封装，处理数组类数组，对象等
+$box.each(function(index,item){
+    //item 遍历每一项
+    //index,索引
+    item=this
+})
+
+ $.each([10,12,34](index,item)=>{
+
+ }）
+ 
+ 四。jq上的方法调用
+ 1.$()首先把它当作普通函数执行，只不过创建的是结果算是它的一个实例
+ jq的很多方法都放到jq.prototype上，这些方法实例调用
+ $([selector].xxx)() dom操作
+ 2.jq是一个普通对象，对象上的方法，实例不能直接调用，只为了提供有助于开发的方法
+ $.xxx()  内外使用
+ $.ajax()
+ $.each()
+ 3.可以自己在jq原型上扩展方法 $.fn.extends({xxx:xxx})
+ 
+ //写jq插件
+ $.fn.extends({
+     AAA(){
+         "向原型上扩展方法"
+     }
+ })
+ //完善类库
+ $.extends({
+     AAA(){
+         "向对象上扩展方法"
+     }
+ })
+
+
+
+  
+
+
+   
 
 -->
  <script src="./node_modules/jquery/dist/jquery.min.js/"></script>
+
 </body>
 </html>
