@@ -1,6 +1,7 @@
 let cascadeFlowModule = (function () {
 	let columns = Array.from(document.querySelectorAll('.column')),
 		_data = [];
+		
 
 	// 从服务器获取数据
 	let queryData = function queryData() {
