@@ -12,6 +12,8 @@ let pbl=(function () {
                 console.log(data); //获取到数据，获取完数据了执行下面的数据
                 render(data) //异步的形式写的，不会等,render在这执行，不再下面写了
                 lazyLoadImg();
+                flag=true;
+               
             }
            })
          }
@@ -73,16 +75,35 @@ let pbl=(function () {
             }
        
         })
-
-
-    }
+      }
+    //6.加载更多图片,在
+    let loadMore=function(){
+        let $window=$(window);
+        let T=$window.outerHeight()+$window.scrollTop();
+        let el=[...$columns].sort((a,b)=>{
+            return a.offsetHeight-b.offsetHeight
+        })[0] //最短的那个出现的时候就加载出来
+        let $el=$(el);//把原生转为jq
+        //最矮的这个元素底边到body顶边的距离
+        let h=$el.offset().top+$el.outerHeight();
+        if(h<T){
+            //证明最短的那个底边就让它加载显示出来图片
+            if(!flag)return;
+            flag=false;
+            getdata(); //触发很多次，只要触发一次，防抖处理
+          }
+        }
     return{
         init(){
             getdata();
-   
+            //5.当页面滚动的时候懒加载，
+            window.onscroll=function(){
+                lazyLoadImg();
+                loadMore();
 
+            }         
         }
-    }
+     }
     
 })();
 pbl.init();
