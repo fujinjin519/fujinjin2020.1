@@ -1,6 +1,4 @@
-/*
- * UTILS中集合了我们以后项目中经常会使用的方法 
- */
+
 let utils = (function () {
 	function getCss(element, attr) {
 		let value = window.getComputedStyle(element)[attr],
@@ -39,16 +37,13 @@ let utils = (function () {
 			attr = arguments[1],
 			value = arguments[2];
 		if (len >= 3) {
-			// 单一设置样式
 			setCss(element, attr, value);
 			return;
 		}
 		if (attr !== null && typeof attr === "object") {
-			// 批量设置
 			setGroupCss(element, attr);
 			return;
 		}
-		// 获取样式
 		return getCss(element, attr);
 	}
 
@@ -70,10 +65,6 @@ let utils = (function () {
 			left
 		};
 	}
-
-	// window['_css'] = css;
-	// window['_offset'] = offset;
-	
 	return {
 		css,
 		offset
