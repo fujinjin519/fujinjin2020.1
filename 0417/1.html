@@ -30,6 +30,12 @@ $xxx.each(函数)
     
     
     -->
-    
+    //reduce数组迭代的
+    let arr=[10,20,30,40]
+     let total= arr.reduce((n,item)=>{
+        cosole.log(n,item)  //10  20  //30 30 //60 40
+        return n+item;   
+
+    }，0)   c//传递参数的问题，有参，没参的情况  
 </body>
 </html>
