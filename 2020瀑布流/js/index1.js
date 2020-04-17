@@ -23,7 +23,7 @@ let bindHTML=function bindHTML(){
     data=data.map(item=>{
         let w=item.width,
             h=item.height;
-          h=h/(w/230);//对应的能到的高度
+            h=h/(w/230);//对应的能到的高度
           //最后要放的宽度和高度
           item.width=230;
           item.height=h;
@@ -60,13 +60,15 @@ let bindHTML=function bindHTML(){
           let card=document.createElement('div')
           card.className="card"//类选择器获取card
           //获取元素和html结构也包括
-        card.innerHTML=`<a href="${link}">
+           card.innerHTML=`<a href="${link}">
         <div class="lazyImageBox" style="height:${height}px">
             <img src="" alt="" data-image="${pic}">
         </div>
         <p>${title}</p>
         </a>`
         columns[index].appendChild(card)
+
+
         
       })
     }
@@ -74,53 +76,24 @@ let bindHTML=function bindHTML(){
   //延迟加载
   let  lazyFunc=function  lazyFunc(){
       //所有的图片都得延迟加载，获取lazyImageBox盒子元素
-      let lazyImageBoxs=document.querySelectorAll(".lazyImageBox");
-      [].forEach.call(lazyImageBoxs,lazyImageBox=>{
-          let isLoad=lazyImageBox.getAttribute("isLoad")
-          if(isLoad==="true")return
-          let B=utils.offset(lazyImageBox).top+lazyImageBox.offsetHeight/2;
-          let A=document.documentElement.clientHeight+document.documentElement.scrollTop;
-          if(B<=A){
-            lazyImg(lazyImageBox)
-           }
+     let lazyImageBoxs=document.querySelectorAll(".lazyImageBox");
+     [].forEach.call(lazyImageBoxs,lazyImageBox=>{
+         let isLoad=lazyImageBox.getAttribute("isLoad")
 
-      })
-}
-let lazyImg=function lazyImg(lazyImageBox){
-    let img= lazyImageBox.querySelector('img'),
-    dataImage = img.getAttribute('data-image'),
-    tempImage = new Image;
-tempImage.src = dataImage;
-tempImage.onload = () => {
-    img.src = dataImage;
-    utils.css(img, 'opacity', 1);
-};
-img.removeAttribute('data-image');
-tempImage = null;
-lazyImageBox.setAttribute('isLoad', 'true');
+
+
+     })
+  
+
 
 };
-    let isRender;
-	let loadMoreData = function loadMoreData() {
-        let HTML = document.documentElement;
-        if (HTML.clientHeight + HTML.clientHeight / 2 + HTML.scrollTop >= HTML.scrollHeight) {
-            if (isRender) return;
-			isRender = true;
-			queryData();
-			bindHTML();
-			lazyFunc();
-			isRender = false;
-		}
-	};
+
 return{
         init(){
             queryData();
             bindHTML();
             lazyFunc();
-            window.onscroll = function () {
-	          lazyFunc();
-		     loadMoreData();
-            }
+        
 
         }
     }
