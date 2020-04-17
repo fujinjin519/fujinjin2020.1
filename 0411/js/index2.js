@@ -18,7 +18,8 @@ let pblz=(function(){
 
 //    }
     //实现数据绑定
-    let bin
+
+
     
     
     
@@ -28,7 +29,4 @@ let pblz=(function(){
             getdata()
 
         }
-    }
-
-})()
-pblz.init()
+    
