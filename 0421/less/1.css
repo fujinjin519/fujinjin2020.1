@@ -1,0 +1,31 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+#box {
+  width: 100px;
+  height: 100px;
+  background: red;
+  left:200px;
+  /* animation: turnRound 1s  linear infinite; */ */
+
+}
+@keyframes move123 {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes turnRound {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

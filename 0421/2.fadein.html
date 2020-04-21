@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./less/1.css">
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+     let box=document.querySelector("#box")
+      function fadeIn(ele,time=1000){
+          if(ele.isShowing)return
+          ele.isShowing=true// //为了节流加了这行
+          let opa=0
+          let step=(1000-0)/(time/10);//步长,解决小数点问题
+             let timer=setInterval(()=>{
+              opa+=step;
+              if(opa>1000){
+                  opa=1000
+                  clearInterval(timer)
+                  ele.isShowing=false ////为了节流加了这行 ，控制输出频率，每隔一段时间动一次，不要太频繁，
+               }
+               console.log(opa);
+               
+              ele.style.opacity=opa/1000 
+      },10)
+
+      }
+        box.onclick=function(){
+            fadeIn(this,534)
+        }
+    </script>
+    
+</body>
+</html>

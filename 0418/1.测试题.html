@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        测试题讲解，问题知识点
+1.parsefloart.检测遇到不是数字的返回NAN,  可以识别小数点，查找有效数字，      
+2.+的一边出现 字符串（或者出现对象【先转换为字符串 valueOf/toString】）都是字符串拼接
+
+{}遇到这种就是 Object.prototype.toString 检测数据类型的
+3.执行环境栈
+全局对象(GO)widow     全局变量（VO)  var和function会让GO和VO产生映射机制
+创建值 创建变量  关联一起（3步）  let a=12  基本数据类型存储在 栈内存
+let a={n:12} 引用数据类型 存储在堆内存中  堆内存有16进制的地址
+4.typeof:检测数据类型   null是object   不能细分数据类型，出现两个以上的typeof,结果都是string
+5.关于对象属性名的操作
+var name = 10;
+var obj = {
+    name: '珠峰培训'
+};
+console.log(obj.name);
+console.log(obj['name']);
+console.log(obj[name]); //取的是10 取的是变量名name存储的值，不能是数字结果是undefined
+
+第一种：obj[name]   name不是值，是一个变量，我们相当于把name变量存储的值做为属性名，获取其对应的属性值
+=> obj[10] 不能是数字   undefined
+
+第二种：for(let key in obj){
+   key变量存储的是每次迭代的属性名
+   obj[key]
+}
+6.x+=y 就是 x=x+y
+7.  var f = func(5);  //func函数执行的结果给了f,这个5并没有意义
+  func(7)(8) //这个函数的执行，传了个参数7，8没关系   --x,先运算再取值
+8.var x=3 ，
+     obj={x:5}  //这个也是var过的
+
+ (function(){
+
+})() //自执行函数
+
+9.this.x *= (++x)+y;   this.x=this.x*(++X)+y
+10.if条件不管条件是否成立，都要变量提升，function只声明不定义，
+   判断体中如果有let function const声明的变量，则大括号形成一个块级作用域
+11.symbool.唯一值，对应的变量名两个不能是===是false 
+12.函数的三种角色。
+函数    当new的时候既会当作普通函数执行，也会创造一个实例
+构造函数   类创造实例
+对象  （所有的原型都是对象指向object,对象都有有__proto__)
+js运算符号的优先级别 ：优先级一样从左往右
+设置和获取不同 
+13.函数执行  形成私有作用域 形参赋值  变量提升
+14.内置的push方法做了两件事情：
+往后加一项，
+length+了一项
+  
+
+
+
+
+
+
+-->
+<script>
+// //13题：思路：let可以吧每轮循环变为一个私有的块作用域，每个私有作用域有个私有变量，分别存储每轮的索引
+// for(var i=0;i<10;i++){
+//     setTimeout(()=>{//异步  不会等
+
+//         console.log(i);
+//     },1000)
+//   }
+
+
+////14题：
+//匿名函数，具名化的特点，设置的名字只能在函数内部使用，外部用不了，而且也不能修改
+//要想改结果变成20 10 。只加var就可以
+// var b = 10;
+// (function b() {
+//     b = 20;
+//     console.log(b); //输出函数本身，不能被修改
+// })();
+// console.log(b); //10 全局的b 
+
+
+
+// let fn=function handele(){
+//     handele=10
+//     console.log(handle); //输出函数本身，因为不能改动
+// }
+// console.log(handele); //输出没有被定义名，匿名函数具名后不能在外边用
+
+//19题
+
+let res=fn(1,2)(3)  //函数执行的返回结果，再执行一个方法就是（return一个小函数）
+console.log(res); //6
+
+function fn(){
+    //外层函数实参集合
+    let outer=[].slice.call(arguments)
+    
+    return function anonymous(){ //anonymous匿名的意思
+        //里层函数集合
+        let inner=[].slice.call(arguments)
+       let arr= outer.concat(inner) //两个集合拼接
+       return arr.reduce((n,item)=>{
+           return n+item
+       },0)
+   
+    }
+}
+//2中
+let fn = (...A) => (...B) => [...A, ...B].reduce((n, item) => n + item, 0);
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

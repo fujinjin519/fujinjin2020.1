@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="序号"> 
+    <input type="text" placeholder="姓名"> 
+    <input type="button" value="提交">
+    <ul id="app">
+        <li>
+            序号：<i>1</i>姓名: <i>珠峰</i> <button>删除</button>
+        </li>
+    </ul>
+    <script>
+        var ary=[
+        {index:1,name:"珠峰1"} ,
+        {index:2,name:"珠峰2"} ,
+        {index:3,name:"珠峰3"} ,
+        {index:4,name:"珠峰4"} 
+        ]
+let ul=document.querySelector("#app")
+  
+
+let render=function(){
+      let str=``;
+      ary.forEach(item=>{
+          let{index,name}=item
+          str+=`
+          <li>
+            序号：<i>${item.index}</i>姓名: <i>${item.name}</i> <button>删除</button>
+        </li>`
+     })
+      ul.innerHTML=str
+   }
+    render()
+
+    let handle=function(){
+        let btns=document.querySelectorAll("button");
+      
+      [...btns].forEach((item,index)=>{
+            // console.log(item);
+            item.onclick=function(){
+                // console.log(666);
+        let lis=document.querySelectorAll("li");
+        console.log(lis);
+        let li=lis[index]
+        ul.removeChild(li)
+           }
+           
+        })
+  }
+    handle()
+
+    let ips=document.querySelectorAll("input")
+      ips[2].onclick=function(){
+          //console.log(88);
+          let i=ips[0].value;
+          console.log(i);
+          name=ips[1].value;
+          ary.push({index:1,name:name})
+          render()
+   }
+
+
+
+
+   
+
+
+
+
+
+
+    </script>
+
+  
+
+   
+</body>
+</html>

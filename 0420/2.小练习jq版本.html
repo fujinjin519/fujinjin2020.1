@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="序号"> 
+    <input type="text" placeholder="姓名"> 
+    <input type="button" value="提交">
+    <ul id="app">
+        <li>
+            序号：<i>1</i>姓名: <i>珠峰</i> <button>删除</button>
+        </li>
+    </ul>
+    <script src="../0411/js/jquery-3.3.1(1).js"></script>
+<script>
+     var ary=[
+        {index:1,name:"珠峰1"} ,
+        {index:2,name:"珠峰2"} ,
+        {index:3,name:"珠峰3"} ,
+        {index:4,name:"珠峰4"} 
+        ]
+    let $ul=$("#app");
+    let render=function(){
+        let str=``;
+        ary.forEach((item)=>{
+            str+=`
+            <li>
+            序号：<i>${item.index}</i>姓名: <i>${item.name}</i> <button>删除</button>
+           </li>`
+            
+        })
+        $ul.html(str)// jq的写法。不传参数就是获取结构，传参数就是设置新的内容
+         handele()
+    }
+   
+
+
+     let handele=function(){
+        let $btns=$("button",$ul) //获取上下文
+        $btns.on("click",function(){ //jq自带循环，所有的button,都绑定了
+          let $this=$(this) //this点击那项
+        //   $ul.remove($this.parent()) //移除父级元素，原生
+          let n=$this.parent().index() //li里面的索引是需要的button,否则是2
+          console.log(n); //获取每一个button的索引
+          ary.splice(n,1)
+          render()
+
+    })
+
+     }
+ render()
+
+    let $ips=$("input")
+    $ips.eq(2).on("click",function(){ //获取索引用eq 不能用[2]
+          //jq获取input框内容
+          let i=$ips[0].value; //原生
+             name=$ips.eq(1).val(); //jq写法
+             ary.push({index:i,name})
+             $ips[0].value="";
+             $ips.eq(1).val("")
+            render()
+     })
+</script>
+
+</body>
+</html>

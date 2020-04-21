@@ -1,0 +1,40 @@
+@a:100px;
+*{
+    padding: 0;
+    margin: 0;
+}
+#box{
+   width: @a; //less可以写变量@+名字.方便改的话好改直接改@a的值就可以，less可以嵌套
+    height: @a;
+    background: red;
+    animation: turnRound 1s  linear infinite;
+    &:hover{
+        // animation: move123 2s;
+        // animation-play-state: paused; //鼠标放上停止
+    }
+}
+@keyframes move123{
+    0%{ //动画的透明变化
+        opacity: 1;
+
+    }
+    50%{
+        opacity: 0;
+
+    }
+    100%{
+        opacity: 1;
+
+    }
+}
+@keyframes turnRound{ 
+   0%{ //动画的旋转，
+       transform: rotate(0);
+   }
+   100%{
+       transform: rotate(360deg);
+   }
+
+}
+//annimation：动画   @keyframes 自己得声明动画+名字
+// transition:过度

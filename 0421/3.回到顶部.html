@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            min-height: 4000px;
+            background: linear-gradient(green,yellow,red
+            );
+        }
+        button{
+            position: fixed;
+            bottom: 50px;
+            right:50px;
+            padding: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <button>回到顶部</button>
+    <script>
+        let btn=document.querySelector("button")
+        let h=document.documentElement.clientHeight||document.body.clientHeight
+        window.onscroll=function(){
+            let t=document.documentElement.scrollTop
+            if(t>h){
+                btn.style.display="block"
+               
+            }else{
+                btn.style.display="none"
+
+            }
+         }
+         btn.onclick=function(){
+             //1000ms  时间  1000/10  =100次数走完
+             //距离就是高度 t
+             //t/100 就是速度 步数
+         if(this.isGoing)return //节流
+          this.isGoing=true //节流
+             let t=document.documentElement.scrollTop
+             let step=t/100
+             let timer=setInterval(()=>{
+                 t-=step //减去步数每次移动的距离
+                 if(t<0){
+                    t=0
+                     clearInterval(timer)
+                     this.isGoing=false //节流
+                 }
+
+                 document.documentElement.scrollTop=t 
+ 
+                },10)
+            }
+    </script>
+</body>
+</html>

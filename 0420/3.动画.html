@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 动画 
+        settimeout：1秒执行就完事了
+        setinterval:每隔一段时间执行一次
+        递归：函数自己调用自己，死递归，function fn(){fn()}一般都会有边界判断，让它啥时候停止
+        for循环是同步，会等
+        
+        1.使用settimeout实现setinterval功能,利用递归。再设置边界
+        
+        2.requestAnimationFram (回调函数) ，每当页面渲染完成后，会自动调用这个函数，类似于settimeout。它的效率很高
+    -->
+    <link rel="stylesheet" href="./less/1.css">
+    <div id="box"></div>
+    <script>
+        let box=document.querySelector("#box")
+        let left=0
+        let max=document.documentElement.clientWidth-box.offsetWidth
+    
+        
+      
+        // box.onclick=function(){
+        //     // this.style.left="1000px"
+        //     // // this.style.opacity=0.2
+        //     let timer=setInterval(() => { //每隔一段事件执行一次，
+        //         left+=5
+        //      if(left>max){
+        //          left=max;
+        //          clearInterval(timer)
+        //     }
+        //     this.style.left=left+'px'
+        //     }, 20);
+        // }
+        
+        // box.onclick=function(){
+        //     let f=()=>{
+        //         left+=5
+        //         if(left>max){
+        //             left=max
+        //         }
+        //         this.style.left=left+"px"
+        //       setTimeout(() => { //
+        //         console.log(333);
+        //     left===max ? null: f()  //设置条件到达右边界，停止递归
+
+        //     },20);
+        //     }
+        //     f()
+
+        // }
+    box.onclick=function(){
+        this.style.left="1000px";
+        let timer=setInterval((item)=>{
+            left+=5
+        if(left>max){
+            left=max;
+            clearInterval(timer)
+
+        }
+        this.style.left=left+'px'
+
+
+        },20)
+    }
+         
+       
+       
+       
+       
+    //     let n=0   
+       
+    //     function fn(){
+    //        setInterval(() => {
+    //            n++
+    //         console.log(n);
+                           
+    //        }, 2000);
+
+    //    }
+
+    //    function f1(){  ////用 setTimeout实现setinterval功能
+    //             n++
+    //            console.log(n);
+    //     setTimeout(() => {
+    //              f1()
+    //        }, 1000);
+    //    }
+    //    f1()    
+
+
+    </script>
+</body>
+</html>

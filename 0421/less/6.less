@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+@w:300px;
+@h:200px;
+#box{
+    width: @w;
+    height:@h;
+    margin: 30px auto;
+    border: 1px solid #cccccc;
+    overflow: hidden;
+    >ul{
+        overflow: hidden;
+        width: @w*5;
+        >li{
+            float: left;
+            width:@w;
+            height: @h
+        }
+    }
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./less/1.css">
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        //每隔一秒钟左到右。
+        //一共1000毫秒。
+        let box=document.querySelector("#box")
+        left=0
+        let max=document.documentElement.clientWidth-box.offsetWidth
+        // console.log(max);
+        box.onclick=function(){
+            let step=max/(1000/10)  //移动时间1000ms.每隔10ms移动一次，能算出动多少次//路程除时间就是速度，步长
+            let timer=setInterval(()=>{
+                let+=step;
+                if(left>max){
+                    left=max
+                    clearInterval(timer)
+                }
+                this.style.left=left+"px"
+              },10) //10毫秒
+        }
+        
+
+    </script>
+    
+</body>
+</html>

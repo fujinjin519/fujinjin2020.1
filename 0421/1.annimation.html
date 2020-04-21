@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./less/1.css">
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        let box=document.querySelector("#box")
+        console.log(box);
+        let flag=1 //暂停
+        box.onclick=function(){
+            // flag==1?this.style.animationPlayState="paused":
+            // this.style.animationPlayState="running";
+            this.style.animationPlayState=flag===1?"paused":"running"
+            //等号右边赋值给左边
+            //this.style.获取行内属性
+            //getComputedStyle(元素).属性
+            //元素.currentStyle
+            //this.classlist.add: 增加类名 //classlist ：h5新增属性
+           // this.classlist.toggle :toggle（类名）切换类名写法，获取这个类名操作它
+            flag*=-1  //运行
+        
+          }
+
+        
+
+    </script>
+    <script>
+     
+
+
+        
+
+    </script>
+ 
+    
+</body>
+</html>

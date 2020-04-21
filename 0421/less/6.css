@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#box {
+  width: 300px;
+  height: 200px;
+  margin: 30px auto;
+  border: 1px solid #cccccc;
+  overflow: hidden;
+}
+#box > ul {
+  overflow: hidden;
+  width: 1500px;
+}
+#box > ul > li {
+  float: left;
+  width: 300px;
+  height: 200px;
+}

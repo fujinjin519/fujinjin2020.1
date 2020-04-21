@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- querySelectorAll获取元素不具备响应式，获取是一组
+       - querySelector获取一项
+    bytagname:响应式的-->
+    <input type="text" placeholder="序号"> 
+    <input type="text" placeholder="姓名"> 
+    <input type="button" value="提交">      
+
+    <ul id="app">
+        <li>
+            序号：<i>1</i>姓名: <i>珠峰</i> <button>删除</button>
+        </li>
+    </ul>
+
+    <script>
+        var ary=[
+        {index:1,name:"珠峰1"} ,
+        {index:2,name:"珠峰2"} ,
+        {index:3,name:"珠峰3"} ,
+        {index:4,name:"珠峰4"} 
+        ]
+      let ul=document.querySelector('#app')
+        console.log(ul);
+        
+        // console.log(list);
+        
+       let render=function(){
+           let str=``
+           ary.forEach(item=>{
+               let{index,name}=item
+               str+=` <li>序号：<i>${item.index}</i>姓名:index <i>${item.name}</i> <button>删除</button>  </li>`         
+             })
+         ul.innerHTML=str
+        //  handle()  操作数据的时候
+        handele()
+          
+        }
+     
+         
+         let handele=function(){
+             let btns=document.querySelectorAll("button");
+             console.log(btns);
+             
+             let lis=ul.querySelectorAll("li");//不能让它更新，不能动，放到外面，索引会变，删除的时候，删错位
+             console.log(lis);
+             
+            //  console.log(btns);
+            [...btns].forEach((item,index)=>{
+                console.log(item);
+                item.onclick=function(){
+                  let li=lis[index]
+                  ul.removeChild(li)
+       
+                //    ary.splice(index,1)  操作数据的时候
+                }
+             })
+           }
+           render();
+      
+     let ips=document.querySelectorAll('input')
+        console.log(ips);
+        ips[2].onclick=function(){
+            let i=ips[0].value,
+            name=ips[1].value;
+            ary.push({index:i,name:name});
+            ips[0].value=""
+            ips[1].value=""
+            render()
+
+        } //向数组末尾增加
+</script>
+</body>
+</html>
