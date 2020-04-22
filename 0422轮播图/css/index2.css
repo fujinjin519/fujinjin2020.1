@@ -1,38 +1,46 @@
-.container{
-    position: relative;
-    margin: 0 auto;
-    width: 800px;
-    height: 240px;
-    overflow: hidden;
+.container {
+	position: relative;
+	margin: 0 auto;
+	width: 800px;
+	height: 240px;
+	overflow: hidden;
 }
-.container .wrapper{
-    position: relative;
-    width: 100%;
-    height: 100%;
+
+.container .wrapper {
+	position: relative;
+	width: 100%;
+	height: 100%;
 }
-.container .wrapper .slider{
-    position: absolute;
-    top:0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: 0;
-    opacity: 0;
+
+.container .wrapper .slider {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+
+	/* 初始默认样式 */
+	z-index: 0;
+	opacity: 0;
+
+	/* 动画 */
 	transition: opacity .3s;
-	 
-}
-.container .wrapper .slider:nth(2n+1){
-    opacity: 1;
-    z-index: 1;
-
-}
-.container .wrapper .slider img{
-   width: 100%;
-   height: 100%;
 }
 
-.pagenition {
+/* 默认展示第一张图片 */
+.container .wrapper .slider:nth-child(1) {
+	z-index: 1;
+	opacity: 1;
+}
+
+.container .wrapper .slide img {
+	width: 100%;
+	height: 100%;
+}
+
+/* 分页器 */
+.pagination {
 	position: absolute;
 	z-index: 999;
 	bottom: 10px;
@@ -44,7 +52,7 @@
 	border-radius: 26px;
 }
 
-.pagenition li {
+.pagination li {
 	display: inline-block;
 	margin: 0 10px;
 	width: 16px;
@@ -54,7 +62,7 @@
 	cursor: pointer;
 }
 
-.pagenition li.active {
+.pagination li.active {
 	background: lightcoral;
 }
 
@@ -82,5 +90,3 @@
 .container:hover .arrow {
 	display: block;
 }
-
-
