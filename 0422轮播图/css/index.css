@@ -1,7 +1,7 @@
 .container {
 	position: relative;
 	box-sizing: border-box;
-	margin: 0 auto;
+	margin: 0 auto; 
 	width: 800px;
 	height: 240px;
 	overflow: hidden;
@@ -11,16 +11,22 @@
 	position: absolute;
 	top: 0;
 	left: 0;
+	/* 相对于容器定位，后期运动调整left左边 */
 	box-sizing: border-box;
-	width: 4000px;
+	width: 4000px;  
+	 /*container是800.复制的一个一共5个，宽度是4000px  */
 	height: 100%;
 	display: flex;
+	/* 让它一排显示 */
+	transition: left .3s linear 0s;
+	/* 基于过度动画，实现切换动画效果 */
 }
 
 .container .wrapper .slider {
 	box-sizing: border-box;
 	width: 800px;
 	height: 100%;
+	overflow: hidden;
 }
 
 .container .wrapper .slider img {
