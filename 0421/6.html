@@ -8,23 +8,49 @@
 </head>
 <body>
     <div id="box">
-        <ul class="list">
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-            <li>5</li>
-        </ul>
+        <ul class='list'>
+            <!-- ul 是一个长条 -->
+            <li>
+              <img src="https://cms-bucket.ws.126.net/2020/0227/f8e3f9e3j00q6cu9c0062c000go006yc.jpg" alt="">
+       
+            <li>
+              <img src="https://cms-bucket.ws.126.net/2020/0306/9084f041j00q6rqcl00l2c000go006yc.jpg" alt="">
+        
+            <li>
+              <img src="https://cms-bucket.ws.126.net/2020/0227/e986cfd0j00q6cu4v001hc000go006yc.jpg" alt="">
+         
+            <li>
+              <img src="https://cms-bucket.ws.126.net/2020/0218/2f1f019fj00q5w7pw008sc000go006yc.jpg" alt="">
+ 
+            <li>
+              <img src="http://cms-bucket.ws.126.net/2020/0421/e93e2200p00q94okl00mpc000s600e3c.png" alt="">
+  
+            <li>
+              <img src="https://cms-bucket.ws.126.net/2020/0227/f8e3f9e3j00q6cu9c0062c000go006yc.jpg" alt="">
+        
+          </ul>
     </div>
-<script>
-    let ul=document.querySelector("ul")
-     let timer=setInterval(() => {
-         
-         
-     }, 3000);
 
-
-    </script>
+  <script>
+        let ul = document.querySelector('ul');
+        let start = 0;
+        let timer = setInterval(() => {
+          start -= 600;
+          // ul.style.left = start  + 'px';
+          if(start < -3000){
+            // 小于 -3000的时候 证明条已经出去了
+            // -3000的时候 我们显示的是伪第一张
+            start = 0;
+            ul.style.transition = 'none';
+            ul.style.transform = `translateX(${start}px)`;
+            // 闪到第一张之后  紧接着要网第二张移动 而不是再等1.5s;
+            
+          }else{
+            ul.style.transition = 'all 0.3s';
+          }
+          ul.style.transform = `translateX(${start}px)`;
+        }, 1500);
+      </script>
 
     
 </body>
