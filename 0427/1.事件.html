@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* pc端事件：下面的所有事件
+        移动端常用事件：只有几个
+        ontouchstart  手指碰到屏幕
+        ontouchend 手指离开屏幕
+        ontouchmove 手指在屏幕上移动
+        移动端的判断左移动还是右移动，是通过事件对象
+
+
+         */
+        #box{
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+
+
+    </style>
+</head>
+<body>
+    <!-- 3.contenteditable：这个属性可以编辑里面的东西 -->
+    <div id="box" contenteditable="true"> 
+
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script>
+        let box=document.querySelector("#box")
+        let ul=document.querySelector("ul")
+        let list=document.querySelectorAll("li")
+        console.log(box);
+        console.log(list);
+        
+        
+      //1.on事件
+      //      //可以用于绑定事件的  input  window    box,doucumrnt   textera(文本域)
+
+    //    box.onmouseenter=function(){
+    //        console.log("鼠标进入");
+           
+    //    }
+    //    box.onmouseleave=function(){
+    //        console.log("鼠标移出");
+           
+    //    }
+    //    box.onmouseover=function(){
+    //        console.log("鼠标划过");
+           
+    //    }
+    //    box.onmouseout=function(){
+    //        console.log("鼠标划出");
+           
+    //    }
+   
+    //    box.onclick=function(){
+    //        console.log("单击");
+           
+    //    }
+    //    box.ondblclick=function(){
+    //        console.log("双击");
+    //    }
+    //    box.onmousewheel=function(){
+    //        console.log("鼠标滚轮");
+           
+    //    }
+    //    box.onmousedown=function(){
+    //        console.log("鼠标按下666");
+    //    }
+    //    box.oncontextmenu=function(){
+    //        console.log("右键");
+           
+    //    }
+    //键盘事件 onkeydown  keyup  
+      box.onkeydown=function(){
+          console.log("按下"); //按下输入内容
+          
+      }
+      window.onkeydown=function(){
+          console.log(" window onkeydown");
+          
+      }
+
+//4.表单的事件 inp.onfoucus
+// onfocus 光标进去触发
+// onblur 光标离开触发
+// oninput 内容改变触发函数
+// onchange 内容发生改变并且失焦的时候触发
+
+//5.系统事件
+// window.onscroll  页面滚动
+// window.onresize  窗口大小发生改变
+//window.onload  页面所有资源内容加载完毕触发
+// jq中的ready事件，dom加载完成触发
+$(document).ready(function(){
+    //DOM 节点加载完成 骨架完成
+})
+$(function(){ //可以简写成
+    //dom节点加载完成后触发
+})
+      
+      
+        //   2.//性能，双击的时候也会触发单击，定时器解决。第一次不执行，过几秒看它还点击不点击第二次啊，如果点击了就执行双击，不点击就输出单击
+        //  box.onclick=function(){
+        //      this.mydbl=false;
+        //      clearTimeout(this.timer)
+        //      this.timer=setTimeout(() => {
+        //          if(this.mydbl)return;
+        //          console.log("单击");
+                 
+        //      }, 1000);
+             
+        //  }
+        //  box.ondblclick=function(){
+        //      this.mydbl=true //自定义属性
+        //  console.log("双击");
+        //   }
+        //   //
+        
+    </script>
+</body>
+</html>

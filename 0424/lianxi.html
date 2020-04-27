@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        //1.类
+        // class Model {
+        //     constructor(x, y) {
+        //         this.x = x;
+        //         this.y = y
+        //     }
+             
+        //     getx() {
+        //         console.log(this.x);
+
+        //     }
+        //     gety() {
+        //         console.log(this.y);
+
+        //     }
+        //     static n = 100;
+        //     static setNumber(n) {
+        //         this.n=n
+
+        //     };
+        //  }
+        // Model.prototype.z = 10
+        // let m = new Model(10, 20);
+        // let n = new Model(30, 40)
+        // function Modal(x, y) {
+        //     this.x = x;
+        //     this.y = y;
+        // }
+        // Modal.prototype.z = 10;
+        // Modal.prototype.getX = function () {
+        //     console.log(this.x);
+        // }
+        // Modal.prototype.getY = function () {
+        //     console.log(this.y);
+        // }
+        // Modal.n = 200;
+        // Modal.setNumber = function (n) {
+        //     this.n = n;
+        // };
+        // let m = new Model(10, 20);
+        // let n = new Model(30, 40)
+
+      //2.回调函数:callback形参的名字
+      //把一个函数当做值传递给另外一个函数，在另外一个函数中把这个函数执行 “回调函数”
+      //可以改变this,可以给回调函数传递实参，可以接收函数的返回结果
+    //   function func(callback){
+    //       for(let i=0;i<5;i++){
+    //        //  callback(i)
+    //        //  console.log(this);
+    //        let res= callback.call(document,i)
+    //        console.log(i);
+    //        console.log(res);
+    //        if(res===false){
+    //            break;
+    //        }
+    //     }
+
+    //   }
+    //   func(function anonymouse(index){
+    //     //console.log(index);
+    //       console.log(this);
+    //       if(index>=3){
+    //           return false
+    //       }
+    //       return "a"+index
+      // })
+
+      //3.each封装
+    //    function isArrayLike(obj){
+    //        let length=!!obj&&("length"in obj)&&obj.length
+    //       return Array.isArray(obj)||length===0||(typeof length==="number"&&length>0&&(length-1)in obj)
+    //    }
+    //    function _each(obj,callback,context=window){
+    //        if(obj==null){
+    //            throw new TypeError("obj是一个对象/数组/类数组") 
+    //         }
+    //         if(typeof obj!=="object"){
+    //           throw new TypeError("bj是一个对象/数组/类数组")
+    //          }
+    //         if(typeof callback!=="function"){
+    //             throw new TypeError("CALLBACK必须是一个函数")
+    //         }
+     
+    //    if(isArrayLike(obj)){
+    //        for(let i=0;i<obj.length;i++){
+    //            let res=callback.call(context,obj[i],i);
+    //            if(res===false){
+    //                break;
+    //            }
+    //            if(res!==undifined){
+    //                obj[i]=res
+    //           }
+    //         }
+    //    }else{
+    //        for(let key in obj){
+    //            if(!obj.hasOwnProperty(key)) break;
+    //            let res=callback.call(context,obj[key],key);
+    //            if(res===false)break;
+    //            if(res!==undifined)obj[key]=res
+    //        }
+    //      }
+    //    return obj;
+    // }
+
+    //4.深克隆
+    function  _cloneDeep(obj){
+       if(obj===null) return null;
+       if(typeof obj !=="object") return obj;
+       if(obj instanceof RegExp) return new RegExp(obj);
+       if(obj instanceof Date) return new Date(obj)
+       let cloneObj=new obj.constructor;
+       for(let key in obj){
+           if(!obj.hasOwnProperty(key))break;
+           cloneObj[key]=_cloneDeep(obj[key])
+       }
+       return cloneObj;
+  
+    }
+    //5.深比较,对象合并
+
+    function _assignDeep(obj1,obj2){
+        let obj=_cloneDeep(obj1)
+        for(let key in obj2){
+            if(!obj2.hasOwnProperty(key))break;
+            let v2=obj2[key]
+            let v1=obj[key]
+            if(typeof v1==="object"&&typeof v2==="object"){
+                obj[key]=_assignDeep(v1,v2)
+                continue
+            }
+            obj[key]=v2
+
+
+
+        }
+
+    }
+
+
+   
+
+    
+
+    
+
+    </script>
+
+</body>
+
+</html>

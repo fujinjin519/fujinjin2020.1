@@ -10,11 +10,9 @@
 </head>
 
 <body>
-	<!-- 轮播图容器 -->
 	<div class="container">
 		<!-- WRAPPER存放所有的图 -->
 		<div class="wrapper">
-			<!-- SLIDER每一个轮播图 -->
 			<div class="slider">
 				<img src="images/banner01.png" alt="">
 			</div>
@@ -27,7 +25,6 @@
 			<div class="slider">
 				<img src="images/banner04.png" alt="">
 			</div>
-			<!-- 克隆的那份（无缝衔接） -->
 			<div class="slider">
 				<img src="images/banner01.png" alt="">
 			</div>
@@ -47,8 +44,10 @@
 	</div>
 
 	<!-- IMPORT JS -->
-	<!-- <script src="./js/jquery.min.js"></script> -->
-	<script src="./js/lian.js"></script>
+	<script src="js/banner-plugin.js"></script>
+	<script>
+		bannerPlugin('.container');
+	</script>
 </body>
 
 </html>

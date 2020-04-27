@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+ 执行banner-plugin方法直接指定容器实现轮播图，
+option：配置项
+钩子函数：在某个阶段干的事情
+根据swiper的封装思路来封装一个轮播图
+根据swiper的封装思路自己用原生封装一个类似的轮播图插件：banner-plugin插件
+
+
+
+封装一款插件优点，
+首先第一件事情一定是分析，分析最后实现的效果和可以支持的配置项
+=> 经验积攒
+=> 研究别人优秀的插件
+写插件的目的是方便后期的开发，而且需要让更多人使用（开源）
+-> 专业，我们写的插件性能要好（代码要好）  
+-> 易用，别人使用起来非常的简便
+-> 强大，尽可能在代码简洁的情况下，支持更强大的效果
+-> 灵活，尽可能基于原生JS编写，不要依赖其他的类库或者内容（拿来即用主义）
+-> 扩展，可升级，升级的时候要考虑到低版本的向后兼容，而且不要和原始的版本差距太大
+
+ js类的概念
+ //1.this.什么的 是每个实例的私有属性
+ //2.modal.prototype.getx....实例的公用的属性
+ //3.modal.n什么的就是把类当做普通的对象  给其设置的自己的私有的属性
+
+ 
+ 
+ 插件 组件  类库 等这些东西分封装  基本上都要基于面向对象思想
+ 我们封装的插件是一个类   基于插件每一次调用实现的轮播图 都是创建类的一个实例，（new Swiper）
+
+ 
+ 
+ 
+ 回调函数：把函数当作一个值传给另一个函数,另一个函数再执行“回调函数‘
+ 应用：
+ 1.箭头函数 settimeout
+ 2.a.jax({
+	 sucess:function(){
+		 //请求成功会把传递的函数执行，也是回调
+	 }
+ })
+ let arr=[12,34,56]
+arr.forEach((item,index)=>{
+	//箭头函数的值当作回调函数传给forEach
+	//箭头函数也是方法
+	//forEach函数执行
+
+})
+//3.事件绑定
+4.callback,回调函数的形参名字
+function func(callback){
+	//callback=anonymous执行
+	//1.可以把func执行的
+	//2.可以给回调函数传递实参数
+	//3.改变this
+	//4.结果////
+	for(let i=0,i<5;i++){
+		callback(i) //把这个i当作实参给anonymous，所以anonymous执行了5次，每次执行基index
+	}
+
+}
+func(function anonymous(index){
+	console.log(index)
+
+})
+
+
+jq中的
+$.each:
+类似于原生的forEach
+但是支持对象和类数组
+
+封装$each:必会练
+
+throw new Error：手动抛出异常信息，控制台会报错，下面代码不执行
+// 自己封装一个EACH，我们让自己封装的方法比JQ的EACH还强大
+// _EACH([VALUE],[CALLBACK],[CONTEXT])
+// 1.可以遍历数组、类数组、对象，每一次遍历都可以把[CALLBACK]执行
+// 2.每一次执行回调函数，都会把当前遍历的结果（当前项\索引）传递给回调函数
+// 3.支持第三个参数，用来改变回调函数中的THIS指向(不传递，默认是WINDOW)
+// 4.支持回调函数返回值，每一次返回的值会把当前集合中的这一项的值替换掉；如果回调函数返回的是FALSE（一定是FALSE），则结束遍历；
+
+
+数组的深浅克隆：
+let arr1=[1,2[4,3]]
+let arr2=arr1.slice(0)//浅克隆 (第一级)
+let arr2=arr1.concat() //concat也行拼接
+let arr2=[...arr1] //收缩运算符 
+arr1===arr2  false:堆内存不一样
+arr1[2]===arr2[2]  true
+
+let arr2=JSON.stringfy(arr1) 
+let arr2=JSON.parse(JSON.stringfy(arr1))//  //深克隆
+1.先把对象变成字符串：没有堆内存，再把字符串转成对象，有了新内存。
+2.但是JSON.stringfy并不是对所有的值都能有效处理，正则处理变为空对象函数/undifined/symbool识别都会变成null，但是对null,数字，字符串，普通对象，数组对象没有影响，会把原始数组变为字符串，但是日期格式处理变为字符串后，再用parse也不会变为对象了，这种情况只能自己写一个
+
+数组其实也可以用for in循环 也是对象
+
+深克隆的方法写必会练：
+
+深浅比较： 
+想两个对象合并为一个对象,重复的名字会替换掉，对象的属性名不能重复
+1.用object.assign  这个就是浅比较，只比较第一级，第二级别的不比较直接替换了
+2.展开运算符号，  这个方法也是浅比较
+3.就想深度比较   把obj1对象
+
+
+
+
+
+
+
+--> 
+<script>
+
+	// function _each(obj,callback,context=window){
+	// 	//类型，回调函数，this,默认不传就是window
+    //    //第一步
+	// 	//1.参数合法性 obj检测
+	// 	//2.检测数据类型 typeof
+	// 	//3.检测是否是函数  抛出异常信息
+
+	// 	//1.循环 for   for in
+	// 	//2.isArraylike检测类数组或者数组   length  数字  length===0 空集合 length>=0   length-1  在对象中
+	// 	//3.判断 true是数组或者类数组
+	// 	//里面再循环
+	// }
+	// _each([1,2,3,45],function anonymous(){
+
+	// })
+
+
+
+// 回调函数   each的封装  练习
+//类数组  数组区别
+//hasopopty:私有属性
+// let box=document.getElementsByTagName("*")
+// console.log(box);
+
+// let arr=[12,34]
+// console.log(arr); //数组
+
+// let obj={0:12,1:34}
+// console.log(obj); //类数组
+
+
+//克隆方法，用递归的方式
+// function cloneDeep(){
+
+
+// }
+// let arr1=[10,"20",true,null,undifined,Symbol("xxx"),
+// {xxx:"xxx"},[10,20],/\d+/,new Date()];
+// let arr2=cloneDeep(arr1)
+
+
+
+</script>
+</body>
+</html>

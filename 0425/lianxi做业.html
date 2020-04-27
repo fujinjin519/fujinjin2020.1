@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //filter 方法
+        // function myfilter(callback, context = widow) {
+        //     if (typeof callback !== "function" || typeof callback === "function" && typeof callback.nodetype === "number") {
+        //         throw new TypeError("callback必须是函数")
+        //     }
+        //     let newArr = [];
+        //     for (let key in this) {
+        //         if (!this.hasOWnProperty(key)) break;
+        //         let res = callback.call(context, this[key], key, this)
+        //         if (res === true) newArr.push(this[key])
+        //     }
+        //     return newArr
+
+        // };
+        
+        // let arr = [12, 34, 56, 10, 6, 8]
+        // let res = arr.filter((item, index) => {
+       
+            
+        //     return item > 10
+        //     console.log(item);
+            
+        // })
+
+        // console.log(res, arr);
+    
+    
+    //     reduce// 
+    //       //reduce数组迭代的
+    // let arr=[10,20,30,40]
+    //  let total= arr.reduce((n,item)=>{
+    //     cosole.log(n,item)  //10  20  //30 30 //60 40
+    //     return n+item;   
+
+    // }，0)   c//传递参数的问题，有参，没参的情况
+    function Myreduce(callback,value){ //传值 空
+        let sumValue;
+        if(typeof callback !=="function"||typeof callback==="function"&&typeof callback.nodetype==="number"){
+            throw new TypeError("callback必须是一个函数")  
+        }
+        if(value!==undifined){ //传参
+            for(let i=0;i<this.length;i++){
+                i===0?sumValue=value :null;
+                sumValue=callback(sumValue,this[i],i,this)
+            }
+          }else{ //没传参
+              for(let i=1;i<this.length;i++){
+                  i===1?sumValue=this[0] :null;
+                  sumValue=callback(sumValue,this[i],i,this)
+              }
+            
+          }
+          return sumValue;
+      } 
+
+   
+    
+
+
+
+
+    </script>
+</body>
+
+</html>

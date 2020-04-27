@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 200px;
+            height: 200px;
+            background:red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        let box=document.getElementById("box")
+        window.onkeydown=function(e){
+            console.log(e);
+            // console.log(e.target);
+            //if else多的情况下，用switch case
+            //offset 偏移量是拿不到css的transform的属性
+            switch(e.code){
+                case "ArrowUp":
+                box.t-=10
+                box.style.transform=``
+
+                break;
+                case "ArrowDown":
+                break
+            }
+      
+            
+        }
+
+    </script>
+</body>
+</html>

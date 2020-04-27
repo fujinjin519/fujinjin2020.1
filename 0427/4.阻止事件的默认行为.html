@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background: red;
+            position:fixed;
+            display: none
+         }
+    </style>
+</head>
+<body>
+    <a href="http://baidu.com" id="linkA">百度一下</a>
+    <div id="box"></div>
+    <input type="text" id="inp">
+    <script>
+        let linkA=document.querySelector("#linkA")
+        let box=document.getElementById("box")
+        let inp=document.querySelector("#inp")
+
+        linkA.onclick=function(e){
+            e.preventDefault() //阻止代码本身具有的特性
+            alert(88)
+            return false //也能阻止
+        }
+        window.oncontextmenu=function(e){
+            // e.preventDefault();
+            console.log(e.clientX,e.clientY);
+            
+            box.style.display="block";
+            box.style.left=e.clientX+"px"
+            box.style.top=e.clientY+"px"
+        }
+        //只能输入数字
+        inp.onkeydown=function(e){
+            console.log(e);
+            if(e.keyCode>=48&&e.keyCode<=57){
+                return true
+            }
+            return false
+       
+        }
+
+
+
+    </script>
+</body>
+</html>

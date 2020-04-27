@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            height: 200px;
+            width: 200px;
+            background: red;
+            /* margin-top: 2000px; */
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="box">
+        <button>123</button>
+    </div>
+    <input type="text" id="inp">
+    <script>
+        let box=document.getElementById("box")
+        let inp=document.getElementById("inp")
+        console.log(inp);
+        
+        //  console.log(box);
+        box.onclick=function(e){ //事件都有e这参数，默认就有
+            e=e||window.event //兼容低版本浏览器
+            target=e.target||e.srcElement //也是兼容低版本
+            console.log(this); //绑定的元素
+            console.log(e.target); //div box 要操作的元素
+            console.log(e.clientX); //点击位置距离，可视窗口的距离
+            console.log(e.pageX); //点击位置距离body的左边距
+            console.log(e.pageY); //上边距
+            console.log(e); // 事件对象
+        }
+        inp.oninput=function(e){//高版本浏览器直接使用id名字作为变量
+            console.log(this.value) //之前获取值是这样火线
+            console.log(e.target.value); //就是获取input框中的内通
+            
+        
+       }
+       inp.onkeydown=function(e){
+           console.log(e);
+           if(e.keyCode==13){
+               alert(e.target.value)
+           }
+
+       }
+        
+
+    </script>
+</body>
+</html>

@@ -40,6 +40,7 @@ function paginationFocus() {
     //循环焦点每一项，根据焦点的索引跟step 的索引做对比，正常对应.但是多了最后一个
     let tempStep = step;//解决创建临时的step
     tempStep === (len - 1) ? tempStep = 0 : null;//临时的等于最后一个时候，让它的step变为0就和第一张一样了
+
     [].forEach.call(paginationList, (item, index) => {
         if (index === tempStep) {
             item.className = 'active';
