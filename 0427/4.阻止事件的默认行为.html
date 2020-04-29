@@ -28,6 +28,7 @@
             alert(88)
             return false //也能阻止
         }
+        //鼠标跟随盒子移动
         window.oncontextmenu=function(e){
             // e.preventDefault();
             console.log(e.clientX,e.clientY);
@@ -36,16 +37,21 @@
             box.style.left=e.clientX+"px"
             box.style.top=e.clientY+"px"
         }
-        //只能输入数字
+        //要求只能输入数字
         inp.onkeydown=function(e){
             console.log(e);
-            if(e.keyCode>=48&&e.keyCode<=57){
+            if(e.keyCode>=48&&e.keyCode<=57||e.keyCode==8){
                 return true
             }
             return false
        
         }
-
+    
+        //普通事件先执行自己的函数，再执行默认行为
+            //onscroll  touchmove：这两个事件是先执行默认行为，再执行自己的函数
+        window.onscroll=function(){
+            e.preventDefault()
+        }
 
 
     </script>

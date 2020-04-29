@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #outer{
+          width: 400px;
+          height: 400px;
+          background-color: sandybrown;
+          margin: 30px auto;
+        }
+        #inner{
+          width: 200px;
+          height: 200px;
+          background-color: rgb(171, 233, 121);
+          margin: 100px auto;
+        }
+        #center{
+          width: 100px;
+          height: 100px;
+          background-color: rgb(73, 116, 165);
+          margin: 50px auto;
+        }
+      </style>
+</head>
+<body>
+    <div id="outer">
+        <div id="inner">
+          <div id="center"></div>
+        </div>
+      </div>
+      <script>
+        //   事件传播 ：从外往里面找（捕获），找到处理后。再从里往外执行（冒泡）
+        //e.stopPropagation 阻止冒泡
+        //e.cancelBubble=true 阻止冒泡  
+          
+        //   outer.onclick=function(){
+
+        //   }
+        //   inner.onclick=function(){
+              
+        //     }
+        //   center.onclick=function(){
+              
+        //     }
+        //   document.body.onclick=function(){
+        //       console.log("body");
+              
+        //   }
+
+        outer.onmouseenter=function(){//鼠标进入  没有穿透
+            console.log('enter');
+            
+        }
+        outer.onmouseover=function(){ //鼠标划过  穿透 冒泡
+            console.log("over");
+            
+        }
+
+         
+  
+  
+
+
+
+      </script>
+    
+</body>
+</html>

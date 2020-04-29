@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .hide{
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <ul id="box">
+    <li>
+      <span>一级菜单1</span>
+      <ul>
+        <li>
+          <span>二级菜单1</span>
+          <ul>
+            <li>
+              <span>三级菜单1</span>
+            </li>
+            <li>
+              <span>三级菜单2</span>
+              <ul>
+                <li>
+                  <span>四级菜单1</span>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <span>二级菜单2</span>
+          <ul>
+            <li>
+              <span>三级菜单1</span>
+            </li>
+            <li>
+              <span>三级菜单2</span>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <span>一级菜单2</span>
+      <ul>
+        <li>
+          <span>二级菜单1</span>
+          <ul>
+            <li>
+              <span>三级菜单1</span>
+            </li>
+            <li>
+              <span>三级菜单2</span>
+              <ul>
+                <li>
+                  <span>四级菜单1</span>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <span>二级菜单2</span>
+          <ul>
+            <li>
+              <span>三级菜单1</span>
+            </li>
+            <li>
+              <span>三级菜单2</span>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <span>一级菜单3</span>
+      <ul>
+        <li>
+          <span>二级菜单1</span>
+          <ul>
+            <li>
+              <span>三级菜单1</span>
+            </li>
+            <li>
+              <span>三级菜单2</span>
+              <ul>
+                <li>
+                  <span>四级菜单1</span>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <span>二级菜单2</span>
+          <ul>
+            <li>
+              <span>三级菜单1</span>
+            </li>
+            <li>
+              <span>三级菜单2</span>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <script>
+    // toggle 本身就是切换
+    //classList的方法可以有好多个类名,可以实现增删,className只能有1个类名要么就没有
+    //box.classList.add(增加类名)  remove（删除）  toggle（切换类名）contains(是否包含 true false)
+
+    let box=document.querySelector("#box")
+    box.onclick=function(e){
+      // console.log(e.target);
+      e=e||window.event;
+      let tar=e.target||e.srcElement //这两行代码兼容低版本，容错机制，看它点击哪个事件对象
+      if(tar.nodeName.toLowerCase()=="span"){
+        console.dir(tar); //点击的是span
+        let next=tar.nextElementSibling //获取元素的弟弟元素节点
+        if(next&&next.nodeName.toLowerCase()=="ul"){
+          next.classList.toggle("hide")
+          // if(next.classList.contains("hide")){
+          //   let uls=next.getElementsByTagName("ul")
+          //   for(let i=0;i<uls.length;i++){
+          //     uls[i].classList.add("hide")
+          //   }
+
+          // }
+          }
+        }
+      }
+
+      //jq版本的写法
+      
+    
+
+  </script>
+</body>
+</html>

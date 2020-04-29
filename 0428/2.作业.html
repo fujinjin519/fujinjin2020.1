@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+     #lit_imgbox{
+         width: 100%;
+         height: 100%;
+     }
+     #big_imgbox{
+         width: 200px;
+         height: 200px;
+         display: none;
+         left:0;
+         top:0;
+         position: fixed;
+
+     }
+     #big_imgbox img{
+         width: 100%;
+         height: 100%;
+     }
+
+
+
+
+    </style>
+</head>
+<body>
+    <!-- 
+        $.extends({}) //扩展到jq自己身上 $.
+        $.fn.extend({}) //扩展到原型上  $().
+        $.extend=$.fn.extend=function(){}
+
+     -->
+     <div id="lit_imgbox">
+         <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1588055182400&di=cd65042a07c2c5ae32505b049cce415e&imgtype=0&src=http%3A%2F%2Ffile02.16sucai.com%2Fd%2Ffile%2F2015%2F0408%2F779334da99e40adb587d0ba715eca102.jpg" alt="">
+     </div>
+     <div id="big_imgbox">
+         <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1588055182399&di=5e44d152e0b5fec86bdf330a7924fca5&imgtype=0&src=http%3A%2F%2Fimage.zp365.com%2Fnews%2F2020%2F3%2F64996729615082.png" alt="">
+     </div>
+     <script>
+         let lit=document.getElementById("#lit_imgbox")
+         let big=document.querySelector("#big_imgbox")
+         lit.onmouseenter=function(){
+             big.style.display="block"
+
+         }
+         lit.onmousemove=function(e){
+             e.clientx
+             big.style.transform=``
+
+         }
+         lit.onmouseleave=function(){
+             big.style.display="none"
+         }
+     </script>
+
+    
+</body>
+</html>
