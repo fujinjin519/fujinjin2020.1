@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            font-size: 16px;
+        }
+        .newList{
+            margin-bottom: 10px;
+        }
+        .newList li{
+            line-height: 30px;
+            border-bottom: 1px solid red;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- 
+    1. 
+    1. 事件：浏览器天生自带的行为，只要进行了相关操作（不论是否写JS代码绑定方法），都会触发相关的事件行为
+    2. 事件绑定：我们基于JS把某个事件绑定方法，这样等到事件触发，会把对应的方法执行
+     不仅会把方法执行，浏览器会给方法默认传递一个事件对象
+     MouseEvent  KeybordEvent  Event   
+     box.onclick=function(ev){
+    ev => 事件对象中的（下面是事件行为）
+        target  事件源    兼容：srcElement
+        clientX / clientY   距离当前窗口的X/Y轴偏移值
+        pageX / pageY   距离BODY的X/Y轴偏移值
+        ev.preventDefault()  阻止默认行为   兼容：ev.returnValue=false
+       ev.stopPropagation() 阻止冒泡传播    兼容：ev.cancelBubble=true
+      ----
+      which 或者 keyCode 监听键盘按键码
+          13 ENTER
+          8   BACK SPACE
+          46  DELETE
+          32  SPACE
+          16  SHIFT
+          17  CTRL
+          37~40  左上右下四个方向键
+          9  TAB
+}
+
+
+2.常用的事件方法有哪些：on.....那些方法
+3.mouseenter和mouseover 区别
+mouseout : 鼠标划出
+  mouseover :鼠标划入  存在冒泡传播机制  
+  mouseenter:鼠标进入  不存在冒泡传播  
+  mouseleave:鼠标离开  
+  真实项目，容器中有后代元素，想要鼠标进入和离开，一般用enter和leave
+
+4.事件冒泡传播机制 dir(event)：
+捕获(外到里查找，找到当前事件触发源，为冒泡阶段提供传播路径)   
+目标 （把事件源的相关事件行为触发，）
+冒泡阶段（除了当前事件源的事件行为触发，从里到外的祖先元素的相关事件行为也会被触发，如果绑定了方法，对应的方法也会执行）
+
+5.事件委托（事件代理）：利用事件的冒泡传播机制，我们只给最外层容器的相关事件行为绑定方法，这样不管触发容器内部哪一个后代元素的相关事件行为，都会传播到容器上，触发它的对应事件行为，我们在执行的方法中，可以基于ev.target来判断事件源，从而做不同的事情；避免给后代元素一个个的注册事件绑定，性能有很大的提高；
+6.事件委托的应用场景：性能块很多，性能40%-60%
+1.需要给动态绑定渲染的元素的每个事件行为绑定方法（新增删除案例jq写法） target.tagName  获取的标签名是大写的  
+2.鼠标进入显示，不显示不用js实现用css实现（：hover .detail)
+toggle/slideToggle  :jq自带方法，控制元素的显示隐藏切换
+slideup:收起  slidedown:打开
+两个例子敲
+
+
+-->
+<a href="" class="shopbox">
+    购物车
+
+</a>
+<div class="detail">
+     暂无购物车信息  
+</div>
+<script src="../0415/node_modules/jquery/dist/jquery.min.js"></script>
+
+</body>
+
+</html>

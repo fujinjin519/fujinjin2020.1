@@ -79,7 +79,7 @@
     //        console.log("右键");
            
     //    }
-    //键盘事件 onkeydown  keyup  
+    //键盘事件 onkeydown  keyup   keypress长按
       box.onkeydown=function(){
           console.log("按下"); //按下输入内容
           
@@ -95,11 +95,16 @@
 // oninput 内容改变触发函数
 // onchange 内容发生改变并且失焦的时候触发
 
+
+
 //5.系统事件
 // window.onscroll  页面滚动
 // window.onresize  窗口大小发生改变
-//window.onload  页面所有资源内容加载完毕触发
+// window.onload  页面所有资源内容加载完毕触发
+// window.onbeforeunload  页面关闭之前
 // jq中的ready事件，dom加载完成触发
+//transitionend
+//readystatechange
 $(document).ready(function(){
     //DOM 节点加载完成 骨架完成
 })
