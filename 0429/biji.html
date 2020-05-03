@@ -64,8 +64,23 @@ mouseout : 鼠标划出
 2.鼠标进入显示，不显示不用js实现用css实现（：hover .detail)
 toggle/slideToggle  :jq自带方法，控制元素的显示隐藏切换
 slideup:收起  slidedown:打开
-两个例子敲
+两个例子敲,树级菜单敲
 
+7.柯里化编程思想：闭包    anonymous匿名函数
+
+8.改变this的处理  bind原理  js模拟bind方法科利华思想
+  写法要注意：.....=func.bind()  bind的
+ 1. 执行bind执行了匿名函数，把匿名函数给了事件绑定的方法，事件触发，执行匿名函数，把要操作的函数改变它的this,直接通过call改变就可以了
+ params:是一个数组
+ 2.传参的情况：
+ call的性能要比apply好一些  尤其是传递给函数的参数超过3项的时候
+ 3.e事件对象的处理：把事件对象传递给func
+ arguments一个是bind的匿名函数
+ arguments一个是事件对象里的匿名函数的
+ 把信息合并拼接在一起
+ 写法es6的写法
+ 
+ bind执行原理
 
 -->
 <a href="" class="shopbox">

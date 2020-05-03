@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        html,
+        body {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .box {
+            position: absolute;
+            /* 整个页面定位 */
+            top: 10px;
+            left: 20px;
+            width: 100px;
+            height: 100px;
+            background: red;
+            cursor: move;
+            /* 鼠标移动 */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+
+    </div>
+    <script>
+        let box = document.querySelector(".box")
+        //除了拖拽功能还要干其他，用dom二级事件
+        //鼠标按下做的事情
+        //4，拖拽过快，鼠标焦点就会丢失，鼠标不在盒子上，移动，抬起方法就不会触发，
+        //解决1.盒子和鼠标绑定在一起    setCapture releaseCapture ie和火狐的。谷歌不支持
+        //解决2 把mousemove和up都绑定给window或者document,这样不管在不在盒子上都一定触发，兼容所有浏览器，这里要处理下this.用bind,不用匿名函数，自定义一个，
+        //3.优化边界判断
+        minL=0,
+        maxL=document.documentElement.clientWidth-box.offsetWidth
+        minT=0;
+        maxT=document.documentElement.clientHeight-box.offsetHeight
+        function down(ev) {
+            //this就是box
+       
+            this.addEventListener('mousemove', move)
+            //鼠标移动，只有鼠标按下才会触发，所以放在鼠标按下里面执行
+            this.addEventListener("mouseup", up)
+            //鼠标抬起,当按下才会抬起，把它也放在down里面
+        
+            //1.拖拽开始之前要记录，鼠标按下的位置和盒子的初始位置（把信息存储到this当前盒子的自定义属性，这样其他方法中，只要this是当前盒子，基于自定义属性，可以获取到这些值
+            this.startLeft=this.offsetLeft; //盒子的初始值
+            this.startTop=this.offsetTop;
+            this.startX=ev.pageX //鼠标的位置  ev.pageX点击位置距离body的左边距
+            this.startY=ev.pageY;
+            this.setCapture(); //盒子和鼠标绑定在一起  ie和火狐下
+        }
+        //鼠标滑动
+        function move(ev) {
+
+            //2.在拖拽（移动的距离）
+            let curLeft=ev.pageX-this.startX+this.startLeft
+                curTop=ev.pageY-this.startY+this.startTop;
+
+                this.style.left=`${curLeft}px`;
+                this.style.Top=`${curTop}px`;
+            
+            
+         }
+        //鼠标抬起
+        function up(ev) {
+              this.removeEventListener("mousemove", move)
+            //鼠标抬起的时候拖拽结束，此时应该移除move
+              this.removeEventListener("mouseup", up)
+              //按下的时候抬起也会触发。移除
+              this. ()//解除绑定
+
+
+        }
+
+        box.addEventListener("mousedown", down);
+        //鼠标按下做的事情,down方法才会执行
+
+
+
+
+    </script>
+
+</body>
+
+</html>

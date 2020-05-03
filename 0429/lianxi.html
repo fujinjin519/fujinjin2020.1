@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style>
+        /* html,body{
+            height: 100%;
+            overflow: hidden;
+            background: skyblue;
+        } */
+        .box {
+            font-size: 20px;
+        }
+
+        .newsList {
+            margin-bottom: 10px;
+        }
+
+        .newsList li {
+            line-height: 30px;
+            border-bottom: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <ul class="newsList">
+            <li>新闻1
+                <a href="javascript:;">删除</a>
+            </li>
+            <li>新闻2
+                <a href="javascript:;">删除</a>
+            </li>
+            <li>新闻3
+                <a href="javascript:;">删除</a>
+            </li>
+            <li>新闻4
+                <a href="javascript:;">删除</a>
+            </li>
+            <li>新闻5
+                <a href="javascript:;">删除</a>
+            </li>
+        </ul>
+        <a href="javascript:;" id="addNews">新增</a>
+    </div>
+    <script src="./js/jquery.min.js"></script>
+    <script>
+        let $addNews = $("#addNews")
+        $newsList = $(".newsList"),
+            count = 5;
+        $newsList.click(function (ev) {
+            let target = ev.target;
+            $target = $(target);
+            if (target.tagName === "A") {
+                $target.parent().remove()
+            }
+        })
+        $addNews.click(function () {
+            let str = ``;
+            for (let i = 0; i < 5; i++) {
+                str += ` <li>新闻${++count}
+                <a href="javascript:;">删除</a>
+            </li>`
+            }
+           $newsList.append(str)
+        });
+    </script>
+    <script>
+    //     // function func(x,y){
+    //     //     return function anonymous(z){
+    //     //         console.log(z+x+y);
+    //     //     }
+    //     // }
+
+    //     // let f=func(10,20);
+    //     // f(100);  
+    // document.body.onclick=function(){
+    //     console.log(this);//  body
+    // }
+
+    // // document.body.onclick=func(); 
+
+
+    // let obj={
+    //     name:'珠峰'
+    // };
+    // function func(){
+    //      console.log(this);
+    // }
+    //  document.body.onclick=func; 
+    //  //document.body.onclick=func();//不能这样写，错误。是把func先执行,把它的返回结果绑定给click;绑定的是它的返回结果
+    //  //document.body.onclick=func.call(obj)
+    //  // 这样不行，不等点击，直接立即执行了，基于APPLY也是一个意思
+
+    //  // 如果我想在点击BODY执行FUNC的时候，让其方法中的THIS变为OBJ，我们应该怎么处理？
+    //  document.body.onclick=func.bind(obj); 
+
+    //  document.body.onclick=function(){
+    //      //this.是body
+    //      func.call(obj);//在外面包层匿名函数，就可以用call //这个this是obj
+    //  }
+
+
+    //  Function.prototype.bind=function bind(context){
+    //      let _this=this;
+    //      return function anonymous(){
+    //          _this.call(context)
+    //      }
+    //  }
+    //  document.body.onclick=func.bind(obj,10,20,30,40)
+
+
+    //  Function.prototype.bind=function bind(context=widow,...params){
+    //      return
+    //  }
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>

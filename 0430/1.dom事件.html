@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        dom事件
+        1.DOM 0级事件  注意一个行为只能绑一个方法，不能重复绑定，顺序以最后的为主   没有的事件属性，就没有,this是绑定的那个元素
+                document.body.onclick=function(){}
+        移除事件  元素.onxxx=null
+        2.DOM 2级事件
+        EVentTarget.prototype上面有三个方法，每一个dom元素最后都找到这个原型
+            addEventListener（在ie678中不支持，需要使用attacheEvent.移除用detachEvent)
+            removeEventListener
+
+              
+        新增事件(addEventListener)绑定：元素.事件类型（）(参数1：事件行为  参数2：事件方法 参数3 捕获true阶段  冒泡阶段 false默认是false )
+        利用事件池机制，可以给当前元素（body)的某个事件行为注册多个不同的方法，按照注入的顺序执行
+          document.body.addEventListener("click",function(){})
+       
+        移除事件绑定，
+        一般不绑定匿名函数，没办法移除
+        元素.removeEventListener([事件行为][事件方法][阶段])，
+        四个数据完全一致才可以一致
+        document.body.removeEventListener（"click",fn1)
+        在ie678中不支持  addEventListener，需要使用attacheEvent.移除用detachEvent
+        可以给元素当前某个行为注入多个相同的方法。顺序问题，乱序绑定比较多，this是widow
+    -->
+     <script>
+
+       
+     </script>
+</body>
+</html>
