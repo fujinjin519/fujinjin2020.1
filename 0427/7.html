@@ -1,26 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        #box{
+        #box {
             width: 100px;
             height: 80px;
             background: red;
         }
     </style>
 </head>
+
 <body>
-    <div id="box"></div>
+    <!-- <div id="box"></div>
     <script>
         box.onclick=function(e){
             console.log(e);
             
         }
         
-    </script>
+    </script> -->
+    <script>
+        class A {
+            constructor() {
+                this.x = 1
+            }
+            getx() {
+
+            }
+            gety() {
+
+            }
+            static x=1;
+
+        }
+        let a=new A
+        
+       class B extends A{
+           constructor(){
+               super()
+               this.z=1
+
+           }
+
+       }
+    //    let ary=[1,2,4,5,6,7]
+    //    let a1=[...ary]
+    //    console.log(a1);
+       
+    //    let arr=[1,2,3]
+    //    let arr1=[1,4,5,6]
+    // //    let ary=[...arr,...arr1]
     
+    //    console.log(arr.concat(arr1));
+       
+       function s(...a){
+        //    let b=[...arguments]
+       console.log(a);
+        //   console.log(b);
+        // //   console.log(arguments);
+          
+        //   let c=Array.from(arguments)
+        //   console.log(c);
+          
+
+
+          
+  
+          
+
+           
+
+
+
+       }   
+       s(1,2,3,4)
+
+let r=Array.of(1,23)
+console.log(r);
+
+let obj={
+    name:1,
+    age:18
+}
+let obj1={...obj}
+console.log(obj1);
+
+
+
+
+
+
+
+    </script>
+
+
 </body>
+
 </html>
