@@ -1,58 +1,4 @@
-.context {
-  width: 100%;
-  height: 100%;
-}
-.context .main {
-  margin: 0 auto;
-}
-.context .main .header {
-  width: 100%;
-}
-.context .main .header #advertising {
-  height: 80px;
-  background: rgba(141, 18, 141);
-  display: flex;
-  justify-content: center;
-  position: relative;
-}
-.context .main .header #advertising .img1 {
-  width: 190px;
-  height: 80px;
-}
-.context .main .header #advertising .img1 img {
-  width: 100%;
-  height: 100%;
-}
-.context .main .header #advertising .img2 {
-  width: 990px;
-  height: 80px;
-}
-.context .main .header #advertising .img2 img {
-  width: 100%;
-  height: 100%;
-}
-.context .main .header #advertising .img3 {
-  width: 116px;
-  height: 46px;
-  position: absolute;
-  top: 16px;
-  left: 1100px;
-}
-.context .main .header #advertising .img3 img {
-  width: 100%;
-  height: 100%;
-}
-.context .main .header #advertising .img4 {
-  width: 116px;
-  height: 46px;
-  position: absolute;
-  top: 16px;
-  left: 1230px;
-}
-.context .main .header #advertising .img4 img {
-  width: 100%;
-  height: 100%;
-}
+
 .context .main .header #advertising #btnT {
   width: 20px;
   height: 20px;
@@ -766,8 +712,7 @@
   z-index: -1;
 }
 .context .main .content {
-  width: 100%;
-  background: url(../img/8fd243dca0a11aa4.png.webp) no-repeat 50% 0% #f4f4f4;
+ 
 }
 .context .main .content .banner {
   width: 100%;
