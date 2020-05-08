@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业题</title>
+</head>
+
+<body>
+    <script>
+        //22。
+        //         new 函数执行
+        // 1. 【普通函数】：
+        //   1）形成私有的上下文（进栈&AO）
+        //   2）初始化作用域链、初始化arguments、形参赋值、变量提升、代码执行 ...
+        // 1. 【构造函数】
+        //   1）默认创建一个实例对象，并且让THIS指向这个实例对象
+        //   2）默认会把创建的实例返回，只不过如果自己手动返回引用值，会以自己返回的为主，就不在是实例了
+
+        function Dog(name) {
+            this.name = name;
+        }
+        Dog.prototype.bark = function () {
+            console.log('wangwang');
+        }
+        Dog.prototype.sayName = function () {
+            console.log('my name is ' + this.name);
+        }
+        function _new(Func, ...args) {
+
+            //=>完成你的代码 重写内置new,实现一样的效果（创建类的实例）
+            //params参数：Func 创建这个类的实例 args:基于剩余运算符，获取到所有要给类传递的实参信息
+            let obj = Object.create(Func.prototype);
+            let result = Func.call(obj, ...args);
+            (result !== null && /^(object|function)$/i.test(typeof obj)) ? obj = result : null;
+            return obj;
+
+
+
+
+        }
+        let sanmao = _new(Dog, '三毛');
+        sanmao.bark(); //=>"wangwang"
+        sanmao.sayName(); //=>"my name is 三毛"
+        console.log(sanmao instanceof Dog); //=>true
+
+  //23.对象+数字   要把对象变为数字
+// 1. 对象.valueOf获取它的原始值，如果原始值是基本类型值，则直接获取原始值，然后进行相关操作
+// 2. 如果不是基本值，则继续调用toString转换为字符串，此时+两边出现了字符串，变为我们的字符串拼接
+
+//25.
+const a={x:100} //常量不严谨
+a.x=200  // 地址不可以改，如果指向一个对象上可以更改的
+//赋值其实就是指针指向的过程，先创建值，（堆栈内存的问题）再创建变量（AO/VO上）
+// 
+//parseint底层机制    10进制
+// 转换为二进制的方法法
+// 
+
+
+    </script>
+</body>
+
+</html>

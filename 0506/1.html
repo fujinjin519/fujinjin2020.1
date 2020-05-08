@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // let x = 10;
+        // if (x) {
+        //   // 条件（验证真假的过程）：
+        //   // x==10 x===10  x>10  x<10  x>=10 ...
+        //   // x 把当前值转换为布尔类型验证真假
+        //   // x>=0 && x<=10  或者  x==1 || x==2
+        //   // ....
+        //   x++;
+        // } else {
+        //   // 以上条件都不成立，执行else
+        //   x--;
+        // }
+        // console.log(x); 
+
+        // var a = 'abc' + 123 + 456;
+        // var b = '456' - '123';
+        // var c = 100 + true + 21.2 + null + undefined + "Tencent" + [] + null + 9 + false;
+        // console.log(a, b, c);
+        // var str = 'abc123';
+        // var num = parseInt(str);
+        // if (num == NaN) {
+        //     alert(NaN);
+        // } else if (num == 123) {
+        //     alert(123);
+        // } else if (typeof num == 'number') {
+        //     alert('number');
+        // } else {
+        //     alert('str');
+        // }
+        // obj = {
+        //     a: 1,
+        //     b: 2,
+        //     1: 2
+        // }
+        // console.log(Object.getOwnPropertyNames(obj))
+        // let x = '10';
+        // switch (x) {
+        //     case 1: //=>在x等于1的情况下做什么
+        //         x += 1;
+        //         break; //=>每一种情况结束都要设置break（以供当此条件成立并处理完事情后，通知代码不在向下执行）
+        //     case 5:
+        //         x += 2;
+        //         break;
+        //     case 10: //=>'10'===10  FALSE
+        //         x += 3;
+        //         break;
+        //     default: //=>等价于else，而且最后一个判断结束无需设置break
+        //         x += 4;
+        // }
+        // console.log(x);
+
+        //   function quchong(ary){
+        //       let obj={}
+        //       for(let i=0;i<ary.length;i++){
+        //           let item=ary[i];
+        //           if(obj[item]!==undefined){
+        //               ary.splice(i,1)
+        //               i--;
+        //               continue
+        //           }
+        //           obj[item]=item
+        //       }
+        //       return ary
+        //   }
+        //     let ary=[1,2,3,1,2,5]
+        //     console.log(quchong(ary));
+
+        let ary = [1, 45, 67, 23]
+        //console.log(ary.pop());//删除23
+        //console.log(ary.push(5)); //length
+       // console.log(ary.unshift(5));  
+        //console.log(ary);
+
+        //  console.log(ary.splice(0,1));//1  索引0开始删除1个
+        // console.log(ary.splice(1,2)); // 67  23
+        
+        console.log(ary.slice(0,2));//索引0截取到索引2,不包括2  [45]
+        console.log(ary.slice(0,3)); //
+    
+
+        
+     
+     
+        
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

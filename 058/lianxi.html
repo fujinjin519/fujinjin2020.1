@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // //23
+        //  function isNumbic(num){
+        //      num=Number(num);
+        //      if(isNaN(num)){
+        //          throw new TypeError("必须是一个有效数字")
+        //      }
+        //      return num
+
+        // }
+        // Number.prototype.plus=function plus(num){
+        //     num=isNumbic(num);
+        //     return this+num
+        // }
+        // Number.prototype.minus=function minus(num){
+        //     num=isNumbic(num);
+        //     return this-num
+        // }
+
+        // let n = 10;
+        // let m = n.plus(10).minus(5);
+        // console.log(m);//=>15（10+10-5）
+
+
+
+        String.prototype.queryURLParams=function queryURLParams(key){
+                    let obj={}
+                    let pollIndex=this.lastIndexOf("#")
+                    if(pollIndex>-1){
+                       obj['_HASH']=this.substring(pollIndex+1)
+
+                    }
+             this.replace(/([^?&=#]+)=([^?&=#]+)/g, (_, $1, $2) => obj[$1] = $2);
+             if(key!==undefined){
+                 return obj[key];
+             }
+             return obj
+
+         }
+         
+        let url = "http://www.zhufengpeixun.cn/?lx=1&from=wx#video";
+        console.log(url.queryURLParams("from")); //=>"wx"
+        console.log(url.queryURLParams("_HASH")); //=>"video"
+
+
+
+    </script>
+</body>
+
+</html>
