@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 封装jq版本的ajax -->
+    <script>
+        $.ajax({
+            url:"./data.json",
+            method:"get", //请求方式 不传默认get
+            data:{a:123,b:14}, //传给后台的参数
+            async:true,//同步异步
+            cache:false,//是否走缓存 ，默认不可以
+            success:function(){
+                console.log(data);
+              },error(){
+                  console.log("erro");
+             }
+          })
+    </script>
+    <script>
+        function ajax(options){
+            let {  //对象的饿结构赋值
+                url,
+                method,  //后台请求数据的方式
+                data={},//默认给的值 给后台的数据参数
+                async=true, //默认的值
+                cache=false,//默认的值
+                success,
+
+            }=options;
+            method=method.toLowerCase();
+            //data 给后台的数据参数， 请求的方式不一样，参数的饿位置不一样
+            // get:?后面   post：请求体中  不管是什么方式都用到search字符串
+           //2
+            let searchStr=``; 
+            Object.keys(data).forEach((key)=>{
+                searchStr+=`${key}=${data[key]}&`
+            })
+            searchStr=searchStr.replace(/&$/,"");
+            //3.怎么判断get还是post
+            if(method=="get"){
+                if(url.indexof("?")==-1){
+                    //判断有没有问号码，=-1没有问号
+                    url+=("?"+searchStr)
+               }else{
+                   url+=("&"+searchStr)
+               }
+               if(!cache){ //4.
+                   //判断下缓存，因为只有get有缓存
+                   url+=``
+               }
+            
+            }
+
+
+
+
+            //1
+            let xhr=new XMLHttpRequest();
+            //全部写成了变量了
+            xhr.open(method,url,async);
+        
+            xhr.onreadystatechange=function(){
+                if(xhr.readyState==4){
+                    if(/200|304/.test(xhr.status)){
+                          success()
+                          //6.再判断后面有没有suceess
+                    }else{
+                        error()
+                    }
+                }
+            }
+            xhr.setRequestHeader("") //5.设置请求头
+            xhr.send(searchStr)
+
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // let n=10
+        // setTimeout(()=>{
+        //     n++
+        //     console.log(n); //13
+
+
+        // },1000)
+        // console.log(n); //10
+
+        // window.onscroll=function(){
+        //     console.log("ok");
+        // }
+        // let n=10
+        // setTimeout(()=>{
+        //     n++;
+        //     console.log(n); //11
+
+
+        // },1000)
+        // console.log(n); //10
+        // for(let i=0;i<9999;i++){
+
+        // }
+        // console.log(n); //10
+
+        // $.ajax({
+        //     url: "",
+        //     menthod: "get",
+        //     success: function (result) {
+        //         $.ajax({
+        //             url: '',
+        //             method: "get",
+        //             success: function (result) {
+        //                 $.ajax({
+        //                     url: '',
+        //                     method: "get",
+        //                     success: function (result) {
+
+        //                     }
+        //                 })
+
+        //             }
+        //         })
+        //     }
+        // })
+
+        // function ajax(){
+        //     return new Promise(resolve=>{
+        //         $.ajax({
+        //             url:"",
+        //             method:"get",
+        //             success:function(){
+
+        //             }
+                    
+
+        //         })
+
+        //     })
+        // }
+    //     let p1=new Promise((resolve,reject)=>{
+    //         //console.log("ok");
+    //         setTimeout(()=>{
+    //             //console.log("ok");
+    //             resolve("ok")
+    //             console.log(p1);
+
+    //            },1000)
+    //         })
+    //    console.log(p1);
+    // let p1=new Promise((resolve,reject)=>{
+    //    setTimeout(() => {
+    //        if(Math.radom()<0.5){
+    //            reject("no")
+    //        }else{
+    //            resolve("ji")
+    //        }
+           
+    //    }, 1000);
+    //     resolve("xixi","hhah ")
+        
+    //  })
+    // //console.log(p1);
+    // p1.then(result=>{
+    //     console.log(`成功 `);
+    //  },reason=>{
+    //     console.log(`失败 ${reason}`);
+    // })
+      
+    //    new Promise((resolve,reject)=>{
+    //         $.ajax({
+    //             url:"",
+    //             method:"get",
+    //             success:function(){
+    //                 resolve(result)
+    //            },
+    //             error:reject
+    //         });
+    //    }).then(result=>{
+
+    //    },reason=>{
+
+    //    }
+    //    )
+
+// let p1 = new Promise((resolve, reject) => {
+// 	setTimeout(() => {
+// 		resolve('OK'); //=>P1状态是成功的
+// 	}, 1000);
+// });
+// let p2 = p1.then(result => {
+// 	console.log(`成功：${result}`);
+// 	return result + '@@';
+//     // 代码执行没有报错，P2新的PROMISE的状态也是成功的  p2的VALUE是:'OK@@'
+//  }, reason => {
+// 	console.log(`失败：${reason}`);
+// 	return reason + '!!';
+// });
+// //console.log(p2);
+// let p3=p2.then(result=>{
+//     console.log(result);
+//     return Promise.resolve(100)
+// })
+// let p4=p3.then(result=>{
+//       console.log(result);
+// })
+// new Promise(resolve => {
+// 	setTimeout(() => {
+// 		resolve(10); 
+// 	}, 1000);
+// }).then(result => {
+// 	console.log(`成功：${result}`); 
+// 	return result * n; //报错
+// }, reason => {
+// 	console.log(`失败：${reason}`);
+// 	return reason * 10;
+// }).then(result => {
+// 	console.log(`成功：${result}`);
+// 	return result * 20;
+// }, reason => {
+// 	console.log(`失败：${reason}`); //失败
+// 	return reason * 10; //NAn
+// }).then(result => {
+// 	console.log(`成功：${result}`); //成功
+// 	return result * 20;   //NAn
+// }, reason => {
+// 	console.log(`失败：${reason}`);
+// 	return reason * 10;
+// }).then(result => {
+// 	console.log(`成功：${result}`); 
+// 	return Promise.reject(result * 20); //成功 NAN
+// }, reason => {
+// 	console.log(`失败：${reason}`);
+// 	return Promise.resolve(reason * 10);
+// }).then(result => {
+// 	console.log(`成功：${result}`); 
+// }, reason => {
+// 	console.log(`失败：${reason}`); //失败
+// }); 
+
+new Promise((resolve,reject)=>{
+    setTimeout(() => {
+        reject(10)
+        
+    }, 1000);
+}).then(result=>{
+    console.log(`成功：${result}`);
+    return result*10
+
+}).then(result=>{
+    console.log(`成功：${result}`);
+    return result*10
+
+}).then(null,reason=>{
+    
+})
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

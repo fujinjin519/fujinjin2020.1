@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 2个题，还有catch
+    1.在不写失败状态的时候，默认会走一行代码，一直到找到失败为止 
+    2.用catch放的都是失败的状态，then都是成功状态执行的，而不是全部用then，或者是一个写状态玲一个不写或者用null占位
+    3.try,catch  js中的异常捕获
+    如下面的n:报错，看视频错过
+
+-->
+
+<body>
+
+    <script>
+        
+        new Promise(resolve => {
+            setTimeout(() => {
+                resolve(10);
+            }, 1000);
+        }).then(result => {
+            console.log(`成功：${result}`);//成功 10
+            return result * n;  //没有n  报错
+        }, reason => {
+            console.log(`失败：${reason}`);
+            return reason * 10;
+        }).then(result => {
+            console.log(`成功：${result}`);
+            return result * 20;
+        }, reason => {
+            console.log(`失败：${reason}`);//失败
+            return reason * 10; //NAN 但是没报错 undifined*10=NAN
+        }).then(result => {
+            console.log(`成功：${result}`);//成功
+            return result * 20; //NAN*20=NAN
+        }, reason => {
+            console.log(`失败：${reason}`);
+            return reason * 10;
+        }).then(result => {
+            console.log(`成功：${result}`);//成功
+            return Promise.reject(result * 20); //NAN
+        }, reason => {
+            console.log(`失败：${reason}`);
+            return Promise.resolve(reason * 10);
+        }).then(result => {
+            console.log(`成功：${result}`); 
+        }, reason => {
+            console.log(`失败：${reason}`);//失败 NAN
+        });
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="姓名">
+    <input type="password" placeholder="密码">
+    <button id="btn">提交</button>
+    <script>
+        let inp=document.querySelectorAll("input")
+         function getData(obj){
+             //get请求 我们通过？后面的search部分给后台传参数
+             console.log(obj); //输入的是对象，需要吧对象转成字符串
+             let str=``;
+
+             Object.keys(obj).forEach((item,index)=>{
+                 str+=`${item}=${obj[item]}&`
+                 str=str.replace(/&$/,"")
+             }) //    Object.keys把对象的属性名转成数字
+
+             console.log(str);
+          
+             
+
+            let xhr=new XMLHttpRequest();
+            xhr.open("get","./data.json",true);
+            xhr.onreadystatechange=function(){
+                if(xhr.readyState==4){
+                    if(/200|304/.test(xhr.status)){
+
+                    }else{
+
+                    }
+                }
+            }
+            xhr.send();
+        
+            }
+         btn.onclick=function(){
+             getData({
+                 name:inp[0].value,
+                 psw:inp[1].value
+             })
+
+         }
+    </script>
+    
+</body>
+</html>

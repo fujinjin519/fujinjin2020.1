@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" placeholder="姓名">
+  <input type="password" placeholder="密码">
+  <button id='btn'>提交<[表情]tton>
+</body>
+<[表情]ml>
+<script>
+  /* 
+    ajax的请求方式：
+      get形式的请求 get  head  delete    把请求的参数放到了请求的地址?后边(search中)
+      post形式的请求  post  put  option  把请求的参数放到了请求体中
+      工作中常用的 只有 get 和 post 直接放到 xhr.sed() 里面，这里面的参数只能是字符串，需要用json.stringfy转下
+    xhr.open('get')  
+    xhr.open('head')  
+    xhr.open('delete')  
+
+    xhr.open('post')  
+    xhr.open('put')  
+    xhr.open('option')  
+  */
+  let inp = document.querySelectorAll('input');
+  btn.onclick = function(){
+    getData({
+      name:inp[0].value,
+      psw:inp[1].value,
+      _:Math.random(), // 解决缓存
+      t:Date.now() // 解决缓存  两者任用其一即可
+    })
+ 
+ }
+</script>

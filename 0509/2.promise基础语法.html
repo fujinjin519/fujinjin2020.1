@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise和then</title>
+</head>
+
+<body>
+    <!-- promise:ES6中新提供的一个内置类
+        我们把promise进行异步管控的模式叫“promise设计模式“
+
+      
+      
+      
+      1.当作普通对象：静态的私有属性方法
+      promise.all()
+      promise.reject()
+      promise.race()
+      promise.resolve()
+
+      2.类-原型链上的公共属性和方法
+      Promise.prototype.then()
+      Promise.prototype.catch()
+      Promise.prototype.finally() 一般不用
+     
+      3.new创建实例
+
+      jq中的ajax
+      $ajax({
+          ul:"",
+          menthod:”get“
+          async:false 同步  真实项目都是异步的,目的能让数据请求和页面渲染同时进行，提高页面加载效率，
+          suceese:function(){
+
+          }
+      })
+
+      4.Ajax的串行：获取上一个请求的信息后，才能发送第二个请求，请求之间存在依赖，再到第三个请求，这种叫做串行
+
+       Ajax的并行:同时发送多个请求，每个请求没有依赖，
+
+    
+      5.回调地狱：在回调函数中嵌套一个回调函数，在异步请求中不用promise,想实现串行，只能用回调函数。（如果用同步写可以一个个写下来写三个请求就可以，改成异步，只能上一级执行完成再执行下面，用回调函数）
+      
+      那么基于promise解决异步,串行:
+
+
+    
+    
+    
+    
+    -->
+    <script>
+        //语法：let 实例=new promise([excutor])
+        // //excutor是一个函数，一般在函数中掌控我们的异步编程代码
+
+        //1.new promise的时候，会把excutor函数立即执行,ok执行输出
+        //2.并且给这个函数传递两个实参数（两个参数都是函数)resolve, reject两个函数
+        //3.Promise实例拥有[promisestatus]/[promisevalue]
+        //4.promisestatus是promise状态
+        //pendiing 准备状态，默认new promise的时候就是pending状态
+        //resolve:成功态   reject失败态
+        //5.[promisevalue]是promise的值，不论哪个状态都会传递这个值，
+        let p1 = new Promise((resolve, reject) => {
+            // console.log("ok");
+            setTimeout(() => {
+                resolve("ok") //哈哈不会输出只会输出一个
+                //reject("i")
+                // console.log(p1);
+            }, 1000);
+        })
+        //6.p1.then(状态的成功和失败执行的)我们修改promise的状态目的就是为了控制TEHN中的两个方法，哪一个去执行，resoleved对应的resulet,reject对应reason,如果状态都没执行下面的then方法也不会执行
+
+        //7.result/reason接受的是[promisevalue]的信息，这的参数只会输出一个，在EXECUTOR函数中，基于RESOLVE/REJECT执行传递的值，就是给PROMISE-VALUE传递的值，并且只能传递一个值，传递第二个实参没用）
+        p1.then(result => {
+            console.log(`成功,${result}`);
+        }, reason => {
+            console.log(`失败,${reason}`);
+        })
+        // console.log(p1);
+        //promise:new promise的excutor函数执行是同步的，
+        //        new promise的then同步
+        //promise大部分都是同步，异步体现在excutor管控异步的
+
+
+        //项目中
+        new Promise((resolve, reject) => {
+            // 异步请求放置在EXECUTOR中，请求成功或者失败后做啥事情都写在THEN中
+            $.ajax({
+                url: '/api/info',
+                method: 'get',
+                success: result => { //里面放的数据
+                    resolve(result);
+                },
+                error: reject
+            });
+        }).then(result => {
+
+        }, reason => {
+
+        });
+        // EXECUTOR函数中理论上是管控异步编程代码的，但是实际开发中，你可以自己随意处理；但是不论怎么处理，THEN中的方法，只会在PROMISE状态变为成功或者失败的状态下才会执行；
+	// 在EXECUTOR函数中执行RESOLVE或者REJECT，并不一定会立即通知THEN中的方法执行；如果在这两个函数执行之前，已经基于THEN把成功或者失败的方法放置好了，则立即通知执行；如果还没有执行过THEN方法，则需要等到THEN执行后，方法放置好，再通知成功或者失败的方法执行！
+
+
+
+    </script>
+
+</body>
+
+</html>

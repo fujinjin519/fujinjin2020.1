@@ -1,0 +1,80 @@
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+        ul {
+            list-style: none;
+            display: flex;
+            position: relative;
+            top: 1px
+        }
+     
+        li {
+            width: 150px;
+            font-size: 10px;
+            color: black;
+            text-align: center;
+            line-height: 30px;
+            border: 1px solid black;
+            margin-right: 10px;
+        }
+        #tabbox div {
+            width: 500px;
+            height: 200px;
+            border: 1px solid black;
+            text-align: center;
+            line-height: 200px;
+            display: none;
+        }
+        #tabbox {
+            width: 502px;
+            margin: 20px auto;
+        }
+        #tabbox div.active {
+            display: block;
+        }
+        #navbox li.active {
+           border-bottom-color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div id="tabbox">
+        <ul id="navbox">
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <div class="active">我</div>
+        <div>你</div>
+        <div>他</div>
+    </div>
+    <script>
+        let tabbox = document.getElementById('tabbox')
+        let navbox = document.getElementById('navbox')
+        let navlist = navbox.getElementsByTagName('li')
+        let tablist = tabbox.getElementsByTagName('div')
+       location.hash=`Option0`;
+       for(let i=0;i<navlist.length;i++){
+            navlist[i].onclick=function(){
+               location.hash=`Option0${i}`
+
+           }
+
+       }
+       window.onhashchange=function(e){
+           let hashNew=location.hash.slice(-1),
+               hasOld=e.oldURL.slice(-1);
+               navlist[hasOld].className=""
+               tablist[hasOld].className="";
+               navlist[hashNew].className="active"
+               tablist[hashNew].className="active"
+             }
+
+        
+    </script>
+</body>
