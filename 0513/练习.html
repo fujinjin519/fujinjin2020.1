@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <script src="./node_modules/jquery/dist/jquery.min.js"></script> -->
+    <!-- <script>
+        // $.ajax({
+        //     url: "./data.json",
+        //     method: "get",
+        //     dataType: "json",
+        //     data: {
+        //         name: "zhufeng",
+        //         age: 11
+        //     },
+        //     async:true,
+        //     cache:false,
+        //     success:function(result){
+        //     }
+        //   })
+    </script> -->
+
+    <script src="./node_modules/axios/dist/axios.min.js"></script>
+    <script>
+        // axios({
+        //     url: "./data.json",
+        //     method: "get",
+        //     params: {
+        //         name: "zhufeng",
+        //         age: 11
+        //     }
+        // }).then(result => {
+        //     console.log(result);
+
+        // })
+       
+
+        axios.get("./data.json",{
+            params:{
+                name:"zhufeng",
+                age:11
+            }
+        }).then(result=>{
+            console.log(result.data);
+            
+        })
+
+        axios.post("./data.json",{
+            name:"zhufeng",
+            age:11
+
+        }).then(result=>[
+            
+        ])
+
+
+
+
+
+    </script>
+</body>
+
+</html>
