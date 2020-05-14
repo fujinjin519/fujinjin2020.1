@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        CRP：关键渲染路径优化
+       
+        一.完整页面请求发生的的事情
+        1.URL：地址解析
+        域名解析和编码
+        let url=`http://www.zhufengpeixun.cn/?x=1&from=http://www.baidu.com/&name=周迅`
+        //需要对url的特殊内容（特殊符号，网址，中文汉子）进行特殊的编译处理，通过
+        //encodeURL :只把中文编译特殊符号不会编译    console.log(encodeURL(url));
+        //encodeURIComponent :除了中文特殊符号都会编码，一般只是会给问号传递的参数信息进行编码（不是整个url编码）  服务器通过decodeURIComponent解码
+        //escape
+
+        2.DNS域名解析：通过域名找到对应的IP,
+        在服务器上  部署一个项目   访问基于IP（外网IP）访问；域名是对IP的简单化；访问域名  首先要到DNS服务中 找到服务器的外网IP；
+       （部署项目的时候，域名解析阶段，我们需要向DNS服务器上去新增 域名和外网IP的信息）
+         DNS解析，先看浏览器缓存有没有，没有的话证明第一次打开，通过DNS服务器找
+       通过服务器找到IP,这样前后端需要建立链接下面的步骤开始 客户端和服务器的交互开始
+       3.TCP的三次握手，
+       TCP搭建的网络通道，http相当于传输信息的
+       4.发送http请求和相应，服务器处理请求
+       http报文等
+       5.断开连接四次挥手，
+       通道断开，
+       6.浏览器渲染
+    
+   二.浏览器渲染
+   客户端基于网络协议最初获取的是16进制字节（文件流）
+   1.先把字节转换为具体的标记代码
+   2.基于令牌（w3c）词法解析
+   3.产生DOM，css树 render树
+   三。减少http请求次数和资源大小
+   cdn:CDN资源   CDN加速=>分布式服务器 (烧钱)
+   base64:尤其是在移动端  小图标们可以base64（webpack）、大图片慎用（如果加载速度过于慢的 而且很重要的图片  可以base64）  好多代码就是图片
+   图片懒加载：
+   字体图标：
+   资源合并图标：
+   数据延迟分批加载：
+
+   缓存：没缓存-强缓存-协商缓存   资源文件的缓存
+   强缓存：存在固态磁盘中
+   协商缓存：强缓存失效后，走协商缓存，
+   数据请求的缓存用loaclstorage;本地内容的数据存储，有没有数据有没有过期 ，优化方案
+
+     Ajax:
+     创建xhr
+     打开url
+     监听状态和获取数据
+     发送请求
+
+     请求方式:
+     get: get    给的少拿的多    有缓存    
+     post：put    给的多拿的少  从服务器   无缓存  更安全
+     get传递给服务器的信息基于 url?传参数，但是url长度的大小是有限制的  1024*2 字节  ，2kb  4kb
+     xhr.open("get""./api/list?limit=10&page=1&each=xxx&_=+Math.random()")      //_=+Math.random()这个是清缓存
+     post：基于请求主体   约定俗成的传参模式 。post的参数信息大小没限制，真实项目会有大小限制
+     xhr.send("limit=10&page=1&each=xxx")
+     
+     
+
+     
+
+
+-->
+    <script>
+
+
+
+    </script>
+</body>
+
+</html>

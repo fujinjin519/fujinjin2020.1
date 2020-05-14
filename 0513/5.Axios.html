@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--   // //jq的形式 框架不用
+    // $ajax({
+    //     url:'./data.json',
+    //     method:"get",
+    //     dataType:"json", //不会影响服务器返回格式，把服务器返回的格式变为json格式的对象，Ajax内部帮处理的
+    //     data:{
+    //         name:"zhufeng",
+    //         age:"11"
+
+    //     }
+    //   })
+  //axios 基于ajax的基础上再基于promise的库，返回的都是promise的实例 -->
+  
+   <script src="./node_modules/axios"> </script>
+   <script>
+        // axios({
+        //     url:"./data.json",
+        //     method:"post",
+        //     data:{
+        //         name:"zhufeng",
+        //         age:11
+        //     }
+        // }).then(result=>{
+        //     console.log(result);
+            
+            
+        // })
+        //真实项目中使用ajax,基于快捷请求方法实现
+        //axios:get/post/delete/put/head/opitons
+        axios.get("./data.json",{
+            params:{
+                name:"zhufeng",
+                age:11
+
+            }
+        }).then(result=>{
+            console.log(result.data);
+            
+        });
+    
+        //
+       
+        
+
+
+
+
+
+  
+
+    </script>
+</body>
+</html>
